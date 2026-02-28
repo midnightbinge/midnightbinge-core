@@ -37,7 +37,7 @@ export function Hero() {
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 3.8, ease: [0.4, 0, 0.2, 1] }} // Delay accounts for EntranceAnimation
+          transition={{ duration: 1.2, delay: 2.66, ease: [0.4, 0, 0.2, 1] }} // Delay accounts for EntranceAnimation (originally 3.8s)
           className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-foreground mb-6 tracking-tight"
         >
           Better Feels Good<span className="text-accent">.</span>
@@ -46,7 +46,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 4.5, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 3.15, ease: "easeOut" }} // Originally 4.5s
           className="text-lg md:text-2xl text-muted font-body max-w-2xl mb-12"
         >
           Premium makhana crafted for your quietest hours and boldest cravings.
@@ -55,7 +55,7 @@ export function Hero() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 5, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 3.5, ease: "easeOut" }} // Originally 5s
           className="flex flex-col sm:flex-row gap-6 items-center"
         >
           <Link 
@@ -80,7 +80,7 @@ export function Hero() {
         style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "20%"]), opacity }}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 4.2, ease: "easeOut" }}
+        transition={{ duration: 1.5, delay: 2.94, ease: "easeOut" }} // Originally 4.2s
         className="absolute bottom-[-10%] md:bottom-[-20%] z-[5] w-full max-w-4xl opacity-90 pointer-events-none"
       >
         <div className="w-full aspect-[16/9] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/20 via-background/0 to-transparent flex items-center justify-center">
