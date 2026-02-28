@@ -99,7 +99,13 @@ h1, h2, h3, h4, h5, h6, .font-display {
   color: var(--color-brand-cream);
 }
 
-.day-mode h1, .day-mode h2, .day-mode h3, .day-mode h4, .day-mode h5, .day-mode h6, .day-mode .font-display {
+.day-mode h1:not(.text-white):not(.!text-white), 
+.day-mode h2:not(.text-white):not(.!text-white), 
+.day-mode h3:not(.text-white):not(.!text-white), 
+.day-mode h4:not(.text-white):not(.!text-white), 
+.day-mode h5:not(.text-white):not(.!text-white), 
+.day-mode h6:not(.text-white):not(.!text-white), 
+.day-mode .font-display:not(.text-white):not(.!text-white) {
   color: #060b28;
 }
 
