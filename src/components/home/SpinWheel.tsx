@@ -31,6 +31,7 @@ export function SpinWheel() {
 
   return (
     <section className="py-32 bg-background relative overflow-hidden flex justify-center items-center">
+      <div className="brand-pattern-bg opacity-[0.03]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent opacity-50" />
       
       <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between max-w-5xl gap-16">
@@ -51,21 +52,21 @@ export function SpinWheel() {
                 placeholder="Your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-surface border border-white/10 rounded-full px-6 py-4 text-white focus:outline-none focus:border-accent transition-colors"
+                className="w-full rounded-full px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all"
                 disabled={isSpinning}
               />
               <button 
                 type="submit"
                 disabled={isSpinning || !email}
-                className="w-full bg-accent hover:bg-accent-hover text-white rounded-full px-6 py-4 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-accent hover:bg-accent-hover text-white rounded-full px-6 py-4 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-accent/20"
               >
                 {isSpinning ? "Spinning..." : "Spin the Wheel"}
               </button>
             </form>
           ) : (
-            <div className="bg-surface border border-accent/30 rounded-2xl p-8 text-center animate-in fade-in zoom-in duration-500">
-              <p className="text-warm font-display text-2xl mb-2">You won!</p>
-              <p className="text-4xl text-white font-bold mb-4">{result}</p>
+            <div className="bg-surface border border-accent/30 rounded-2xl p-8 text-center animate-in fade-in zoom-in duration-500 shadow-xl">
+              <p className="text-accent font-display text-2xl mb-2">You won!</p>
+              <p className="text-4xl text-foreground font-bold mb-4">{result}</p>
               <p className="text-muted text-sm">We'll email you your code when we launch.</p>
             </div>
           )}

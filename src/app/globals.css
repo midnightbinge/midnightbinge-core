@@ -10,9 +10,8 @@
   --color-warm: var(--color-warm);
   --color-muted: var(--color-muted);
   --color-brand-cream: var(--color-brand-cream);
-  --color-brand-offwhite: #F4F1EB;
-  --color-brand-muted: #888AAA;
-  --color-brand-white: #FFFFFF;
+  --color-input: var(--color-input);
+  --color-input-border: var(--color-input-border);
 }
 
 @font-face {
@@ -66,6 +65,8 @@
   --color-warm: #F0C070;
   --color-muted: #888AAA;
   --color-brand-cream: #FAF5E9;
+  --color-input: rgba(0, 0, 0, 0.3);
+  --color-input-border: rgba(255, 255, 255, 0.1);
   
   --font-display: 'Elsie', serif;
   --font-body: 'Poppins', sans-serif;
@@ -82,6 +83,8 @@
   --color-warm: #E0A840;
   --color-muted: #6A6D88;
   --color-brand-cream: #060b28;
+  --color-input: rgba(255, 255, 255, 0.5);
+  --color-input-border: rgba(107, 92, 231, 0.2);
 }
 
 body {
@@ -93,14 +96,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.brand-pattern-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/Brand Pattern Without bg 01.png');
+  background-repeat: repeat;
+  background-size: 300px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.day-mode .brand-pattern-bg {
+  opacity: 0.07;
+  filter: brightness(0) saturate(100%) invert(8%) sepia(34%) mid(38%) hue-rotate(224deg) brightness(92%) contrast(101%); /* Match #060b28 roughly */
+}
+
 h1, h2, h3, h4, h5, h6, .font-display {
   font-family: var(--font-display);
   line-height: 1.15;
   color: var(--color-brand-cream);
+  position: relative;
+  z-index: 1;
 }
 
-.day-mode h1, .day-mode h2, .day-mode h3, .day-mode h4, .day-mode h5, .day-mode h6, .day-mode .font-display {
+.day-mode h1:not(.keep-white), 
+.day-mode h2:not(.keep-white), 
+.day-mode h3:not(.keep-white), 
+.day-mode h4:not(.keep-white), 
+.day-mode h5:not(.keep-white), 
+.day-mode h6:not(.keep-white), 
+.day-mode .font-display:not(.keep-white) {
   color: #060b28;
+}
+
+.keep-white {
+  color: white !important;
 }
 
 /* Animations */
@@ -112,4 +143,16 @@ h1, h2, h3, h4, h5, h6, .font-display {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Form Styles */
+input, textarea, select {
+  background-color: var(--color-input) !important;
+  border-color: var(--color-input-border) !important;
+  color: var(--foreground) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--foreground);
+  opacity: 0.5;
 }
