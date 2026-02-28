@@ -37,10 +37,11 @@ export default function RangePage() {
     : allProducts.filter(p => p.category === activeTab);
 
   return (
-    <div className="bg-background min-h-screen pt-32 selection:bg-accent selection:text-white">
+    <div className="bg-background min-h-screen pt-32 selection:bg-accent selection:text-white relative overflow-hidden">
+      <div className="brand-pattern-bg" />
       
       {/* Header */}
-      <section className="container mx-auto px-6 md:px-12 mb-16 text-center">
+      <section className="container mx-auto px-6 md:px-12 mb-16 text-center relative z-10">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,7 +60,7 @@ export default function RangePage() {
       </section>
 
       {/* Tabs */}
-      <section className="container mx-auto px-6 mb-16 flex flex-wrap justify-center gap-4">
+      <section className="container mx-auto px-6 mb-16 flex flex-wrap justify-center gap-4 relative z-10">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -67,7 +68,7 @@ export default function RangePage() {
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               activeTab === cat 
                 ? "bg-accent text-white shadow-[0_0_20px_rgba(107,92,231,0.4)]" 
-                : "bg-surface text-muted hover:text-white border border-white/5"
+                : "bg-surface text-muted hover:text-foreground border border-muted/10"
             }`}
           >
             {cat}
@@ -76,7 +77,7 @@ export default function RangePage() {
       </section>
 
       {/* Product Grid */}
-      <section className="container mx-auto px-6 md:px-12 mb-32 min-h-[50vh]">
+      <section className="container mx-auto px-6 md:px-12 mb-32 min-h-[50vh] relative z-10">
         <motion.div 
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -90,13 +91,13 @@ export default function RangePage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="bg-surface rounded-2xl p-8 flex flex-col border border-white/5 group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden"
+                className="bg-surface rounded-2xl p-8 flex flex-col border border-muted/5 group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden shadow-lg"
               >
                 {/* Glow behind product */}
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-accent/0 group-hover:bg-accent/10 rounded-full blur-[60px] transition-colors duration-500 pointer-events-none" />
 
                 {product.isGlobal && (
-                  <span className="absolute top-6 right-6 bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">
+                  <span className="absolute top-6 right-6 bg-accent/10 text-accent text-xs font-bold px-3 py-1 rounded-full border border-accent/20">
                     Global Market
                   </span>
                 )}
@@ -108,25 +109,25 @@ export default function RangePage() {
 
                 <div className="flex-grow flex flex-col z-10">
                   <Link href={`/range/${product.slug}`} className="hover:text-accent transition-colors">
-                    <h3 className="text-3xl font-display text-white mb-2">{product.name}</h3>
+                    <h3 className="text-3xl font-display text-foreground mb-2">{product.name}</h3>
                   </Link>
                   <p className="text-muted italic text-sm mb-6 flex-grow">"{product.desc}"</p>
                   
-                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/10">
+                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-muted/10">
                     <div>
                       {product.sizes.length > 0 && (
                         <div className="flex gap-2 mb-1">
                           {product.sizes.map(size => (
-                            <span key={size} className="text-xs bg-white/5 text-white/70 px-2 py-0.5 rounded">{size}</span>
+                            <span key={size} className="text-xs bg-muted/10 text-muted px-2 py-0.5 rounded">{size}</span>
                           ))}
                         </div>
                       )}
-                      {product.price && <p className="text-white font-medium">{product.price}</p>}
+                      {product.price && <p className="text-foreground font-medium">{product.price}</p>}
                     </div>
                     
                     <button 
                       onClick={(e) => { e.preventDefault(); playCrunch(); alert(`Notify form for ${product.name}`); }}
-                      className="px-5 py-2 bg-white/5 hover:bg-accent text-white rounded-full text-sm font-medium transition-colors"
+                      className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-medium transition-colors shadow-md"
                     >
                       Notify Me
                     </button>

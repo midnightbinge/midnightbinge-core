@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Midnight Binge Core
 
-## Getting Started
+Midnight Binge is a premium makhana snack brand crafted for real moments. This repository contains the core web application, built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Audio**: [Howler.js](https://howlerjs.com/)
+- **Language**: [TypeScript](https://www.typescript.org/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Brand Identity
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The application reflects a "Midnight" aesthetic—sophisticated, moody, yet comforting.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Primary Dark Theme**: *Mysterious Depths* (`#060b28`)
+- **Primary Light Theme**: *Pale Lavender* (`#d6d2ff`) - **Default Theme**
+- **Accent**: Royal Purple (`#6B5CE7`)
+- **Typography**: 
+  - Display: `Elsie` (Serif)
+  - Body: `Poppins` (Sans-serif)
 
-## Learn More
+## 🛠 Technical Architecture
 
-To learn more about Next.js, take a look at the following resources:
+### Theme System
+The project implements a custom dual-theme system (Dark/Light) using CSS variables and a `ThemeProvider`.
+- **Default**: Light Mode (`.day-mode` class on `html`).
+- **Persistence**: Theme preference is saved in `localStorage`.
+- **CSS Variables**: Colors, spacing, and transitions are defined in `src/app/globals.css`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Global Animations
+- **Entrance Animation**: A timed loading sequence (EntranceAnimation.tsx) that sets the mood before the main content reveals.
+- **Micro-interactions**: Hover effects, smooth transitions, and crunch sound effects integrated via `AudioProvider`.
+- **Brand Patterns**: Subtle, repeating brand patterns (`.brand-pattern-bg`) are integrated into section backgrounds across the site.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Folder Structure
+- `src/app`: Routes and page-level components.
+- `src/components`: Reusable UI components.
+  - `home/`: Homepage specific sections (Hero, MoodSelector, SpinWheel, etc.)
+  - `range/`: Components related to the product catalog.
+- `public/assets`: Brand assets, logos, and textures.
+- `public/fonts`: Custom local font files.
 
-## Deploy on Vercel
+## 📦 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Run development server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## 📝 Recent Improvements
+- Optimized loading animation speed (30% faster).
+- Refined Light Mode with *Pale Lavender* palette and improved form styling.
+- Integrated subtle brand pattern backgrounds across all major pages.
+- Standardized `text-foreground` and `bg-background` usage for theme consistency.
+- Updated support contact to `wecare@midnightbinge.com`.
+
+---
+&copy; 2026 Midnight Binge. All rights reserved.
