@@ -27,7 +27,7 @@ export function MakhanaFloat() {
           background: { color: { value: "transparent" } },
           fpsLimit: 60,
           particles: {
-            color: { value: theme === "dark" ? "#FAF5E9" : "#0A0A1A" },
+            color: { value: theme === "dark" ? "#FAF5E9" : "#060b28" },
             links: { enable: false },
             move: {
               direction: "top",

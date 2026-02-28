@@ -21,7 +21,7 @@ export default function GiftsPage() {
       
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A1A] to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#060b28] to-transparent z-10" />
         {/* Placeholder for warm gifted pack image */}
         <div className="absolute inset-0 bg-amber-900/20 mix-blend-multiply" />
         

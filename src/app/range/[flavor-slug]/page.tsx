@@ -117,7 +117,7 @@ export default function ProductPage() {
       </section>
 
       {/* HAND (Bottom): Purchase & Action */}
-      <section className="py-24 bg-[#0A0A1A]">
+      <section className="py-24 bg-[#060b28]">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center">
           
           <div className="bg-secondary border border-white/10 rounded-3xl p-8 md:p-12 mb-16">

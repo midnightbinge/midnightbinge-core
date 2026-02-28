@@ -15,7 +15,7 @@ export function ClosingBridge() {
       <Link 
         href="/range"
         onClick={playCrunch}
-        className="px-10 py-5 bg-white text-[#0A0A1A] hover:bg-brand-cream rounded-full font-medium transition-transform transform hover:scale-105 active:scale-95 duration-200"
+        className="px-10 py-5 bg-white text-[#060b28] hover:bg-brand-cream rounded-full font-medium transition-transform transform hover:scale-105 active:scale-95 duration-200"
       >
         Explore the Range
       </Link>
