@@ -45,7 +45,7 @@ export function MoodSelector() {
   return (
     <section className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6 mb-12 text-center">
-        <h2 className="text-5xl md:text-6xl font-display font-medium text-white mb-4">
+        <h2 className="text-5xl md:text-6xl font-display font-medium text-foreground mb-4">
           What's your Midnight?
         </h2>
         <p className="text-muted text-lg md:text-xl">Find the crunch for your moment.</p>
