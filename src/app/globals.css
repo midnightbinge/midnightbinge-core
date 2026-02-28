@@ -99,14 +99,18 @@ h1, h2, h3, h4, h5, h6, .font-display {
   color: var(--color-brand-cream);
 }
 
-.day-mode h1:not(.text-white):not(.!text-white), 
-.day-mode h2:not(.text-white):not(.!text-white), 
-.day-mode h3:not(.text-white):not(.!text-white), 
-.day-mode h4:not(.text-white):not(.!text-white), 
-.day-mode h5:not(.text-white):not(.!text-white), 
-.day-mode h6:not(.text-white):not(.!text-white), 
-.day-mode .font-display:not(.text-white):not(.!text-white) {
+.day-mode h1:not(.keep-white), 
+.day-mode h2:not(.keep-white), 
+.day-mode h3:not(.keep-white), 
+.day-mode h4:not(.keep-white), 
+.day-mode h5:not(.keep-white), 
+.day-mode h6:not(.keep-white), 
+.day-mode .font-display:not(.keep-white) {
   color: #060b28;
+}
+
+.keep-white {
+  color: white !important;
 }
 
 /* Animations */

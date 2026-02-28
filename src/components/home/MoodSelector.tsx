@@ -83,7 +83,7 @@ export function MoodSelector() {
 
               <div className="relative z-10 text-center p-8">
                 <motion.h3 
-                  className={cn("text-4xl md:text-5xl font-display !text-white transition-all duration-500", isHovered ? "-translate-y-4" : "translate-y-0")}
+                  className={cn("text-4xl md:text-5xl font-display keep-white text-white transition-all duration-500", isHovered ? "-translate-y-4" : "translate-y-0")}
                 >
                   {mood.title}
                 </motion.h3>
@@ -97,12 +97,12 @@ export function MoodSelector() {
                       transition={{ duration: 0.4, delay: 0.1 }}
                       className="absolute inset-x-0 bottom-[-4rem] flex flex-col items-center"
                     >
-                      <p className="text-brand-cream text-xl font-display mb-1 !text-white">{mood.recommendation.name}</p>
-                      <p className="text-warm italic text-sm mb-4 !text-white/80">"{mood.recommendation.desc}"</p>
+                      <p className="text-brand-cream text-xl font-display mb-1 keep-white text-white">{mood.recommendation.name}</p>
+                      <p className="text-warm italic text-sm mb-4 text-white/80">"{mood.recommendation.desc}"</p>
                       <Link 
                         href={`/range/${mood.recommendation.slug}`}
                         onClick={(e) => { e.stopPropagation(); playCrunch(); }}
-                        className="text-xs uppercase tracking-widest !text-white border-b border-white/30 hover:border-accent hover:text-accent pb-1 transition-colors"
+                        className="text-xs uppercase tracking-widest text-white border-b border-white/30 hover:border-accent hover:text-accent pb-1 transition-colors"
                       >
                         See This Flavor
                       </Link>
