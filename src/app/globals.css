@@ -56,11 +56,11 @@
 }
 
 :root {
-  /* Default to dark mode as it's the primary brand identity */
-  --background: #0A0A1A;
+  /* Mysterious Depths - Dark Identity (Default) */
+  --background: #060b28;
   --foreground: #F4F1EB;
-  --color-surface: #13132E;
-  --color-secondary: #0D0D2B;
+  --color-surface: #111845;
+  --color-secondary: #0a113a;
   --color-accent: #6B5CE7;
   --color-accent-hover: #5849D6;
   --color-warm: #F0C070;
@@ -71,17 +71,17 @@
   --font-body: 'Poppins', sans-serif;
 }
 
-/* Day Mode variables (used via toggle) */
+/* Day Mode (Pale Lavender) */
 .day-mode {
-  --background: #FAF5E9;
-  --foreground: #0A0A1A;
-  --color-surface: #F4F1EB;
-  --color-secondary: #FFFFFF;
+  --background: #d6d2ff;
+  --foreground: #060b28;
+  --color-surface: #e4e1ff;
+  --color-secondary: #c9c4ff;
   --color-accent: #6B5CE7;
   --color-accent-hover: #5849D6;
   --color-warm: #E0A840;
   --color-muted: #6A6D88;
-  --color-brand-cream: #0A0A1A;
+  --color-brand-cream: #060b28;
 }
 
 body {
@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 .day-mode h1, .day-mode h2, .day-mode h3, .day-mode h4, .day-mode h5, .day-mode h6, .day-mode .font-display {
-  color: #0A0A1A;
+  color: #060b28;
 }
 
 /* Animations */

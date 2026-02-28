@@ -83,7 +83,7 @@ export function SpinWheel() {
               style={{
                 transition: "transform 3s cubic-bezier(0.2, 0.8, 0.2, 1)",
                 transform: isSpinning ? "rotate(1800deg)" : "rotate(0deg)",
-                background: "conic-gradient(from 0deg, #13132E 0deg 72deg, #0A0A1A 72deg 144deg, #6B5CE7 144deg 216deg, #13132E 216deg 288deg, #0A0A1A 288deg 360deg)"
+                background: "conic-gradient(from 0deg, #111845 0deg 72deg, #060b28 72deg 144deg, #6B5CE7 144deg 216deg, #111845 216deg 288deg, #060b28 288deg 360deg)"
               }}
             >
               {/* Decorative inner circle */}
