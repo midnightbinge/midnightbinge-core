@@ -16,7 +16,10 @@ const productDB: Record<string, any> = {
     ingredients: "Makhana (Popped Lotus Seeds), Olive Oil, Sugar, Spices & Condiments (Chilli, Garlic, Onion), Salt, Tamarind Powder, Yeast Extract.",
     sizes: [{ size: "20g", price: "₹50" }, { size: "60g", price: "₹150" }],
     color: "from-red-900/40",
-    related: [{ name: "Peri Peri", slug: "peri-peri" }, { name: "Achari Punch", slug: "achari-punch" }],
+    related: [
+      { name: "Peri Peri", slug: "peri-peri", image: "/products/02.png" }, 
+      { name: "Achari Punch", slug: "achari-punch", image: "/products/02.png" }
+    ],
     image: "/products/01.png"
   },
   // Fallback for others
@@ -27,7 +30,10 @@ const productDB: Record<string, any> = {
     ingredients: "Makhana (Popped Lotus Seeds), Olive Oil, Proprietary Seasoning Blend, Salt.",
     sizes: [{ size: "20g", price: "₹50" }, { size: "60g", price: "₹150" }],
     color: "from-accent/20",
-    related: [{ name: "Raw Makhana", slug: "raw-makhana" }, { name: "Himalayan Salt & Pepper", slug: "himalayan-salt-pepper" }],
+    related: [
+      { name: "Raw Makhana", slug: "raw-makhana", image: "/products/01.png" }, 
+      { name: "Himalayan Salt & Pepper", slug: "himalayan-salt-pepper", image: "/products/06.png" }
+    ],
     image: "/products/02.png"
   }
 };
@@ -162,7 +168,9 @@ export default function ProductPage() {
                   onClick={playCrunch}
                   className="bg-surface px-6 py-4 rounded-xl border border-white/5 hover:border-accent transition-colors flex items-center gap-3"
                 >
-                  <div className="w-10 h-10 bg-black rounded-md flex-shrink-0" />
+                  <div className="w-12 h-12 bg-black/20 rounded-md flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    <img src={rel.image} alt={rel.name} className="w-10 h-10 object-contain" />
+                  </div>
                   <span className="text-white text-sm font-medium">{rel.name}</span>
                 </Link>
               ))}
