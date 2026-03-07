@@ -21,7 +21,7 @@ The application reflects a "Midnight" aesthetic—sophisticated, moody, yet comf
 - **Typography**: 
   - Display: `Elsie` (Serif)
   - Body: `Poppins` (Sans-serif)
-- **Iconography**: New brand-consistent favicon integrated from the Midnight Logo Suite.
+- **Iconography**: Official brand-consistent favicon integrated from the Midnight Logo Suite.
 
 ## 🛠 Technical Architecture
 
@@ -32,6 +32,7 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
 - **CSS Variables**: Colors, spacing, and transitions are defined in `src/app/globals.css`.
 
 ### Global Animations & UI Features
+- **Cinematic Entrance**: A timed loading sequence with a digital clock that flips to 12:00, triggering a "falling makhana rain" effect.
 - **Hero Slider**: Auto-rotating slider featuring lifestyle "emotion" shots and high-fidelity product mockups.
 - **Category Grid**: Interactive category-based exploration (Roasted, Raw, Cripso) with deep-linking to the Range.
 - **Mood Selector**: Enhanced "What's your Midnight?" experience with hover-reveal product pairings.
@@ -65,10 +66,10 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
    ```
 
 ## 📝 Recent Improvements
-- **Phased Upgrades**: 
-  - Phase 1: Navigation overhaul, logo resizing, and custom hover animations.
-  - Phase 2: Home page restructure with Hero Slider, Category Grid, and full Packaging mapping.
-- Optimized loading animation speed (30% faster).
+- **Phased Upgrades Complete**: 
+  - **Phase 1**: Navigation overhaul, logo resizing, and custom hover animations.
+  - **Phase 2**: Home page restructure with Hero Slider, Category Grid, and full Packaging mapping.
+  - **Phase 3**: Cinematic loading sequence with "falling makhana" at midnight.
 - Refined Light Mode with *Pale Lavender* palette and improved form styling.
 - Integrated subtle brand pattern backgrounds across all major pages.
 - Standardized `text-foreground` and `bg-background` usage for theme consistency.
