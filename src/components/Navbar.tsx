@@ -2,11 +2,12 @@
 
 import { useAudio } from "@/components/AudioProvider";
 import { useTheme } from "@/components/ThemeProvider";
-import { Moon, Sun, Volume2, VolumeX, Menu, X } from "lucide-react";
+import { Moon, Sun, Volume2, VolumeX, Menu, X, Search } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { motion, AnimatePresence } from "framer-motion";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -15,6 +16,7 @@ function cn(...inputs: ClassValue[]) {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { isMuted, toggleMute, playCrunch } = useAudio();
 
@@ -40,32 +42,63 @@ export function Navbar() {
       <nav
         className={cn(
           "fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out",
-          scrolled ? "bg-black/80 backdrop-blur-md py-4" : "bg-transparent py-6"
+          scrolled ? "bg-background/80 backdrop-blur-md py-4" : "bg-transparent py-6"
         )}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/" className="flex-shrink-0">
             {theme === "dark" ? (
-              <img src="/assets/logo-white.png" alt="Midnight Logo" className="h-8 md:h-10 w-auto object-contain" />
+              <img src="/assets/logo-white.png" alt="Midnight Logo" className="h-10 md:h-14 w-auto object-contain transition-all duration-300" />
             ) : (
-              <img src="/assets/logo-black.png" alt="Midnight Logo" className="h-8 md:h-10 w-auto object-contain" />
+              <img src="/assets/logo-black.png" alt="Midnight Logo" className="h-10 md:h-14 w-auto object-contain transition-all duration-300" />
             )}
           </Link>
 
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-10">
             {links.map((link) => (
               <Link
                 key={link.name}
                 href={link.path}
-                className="text-sm font-medium hover:text-accent transition-colors"
+                className="group relative py-2 text-sm font-medium transition-colors"
                 onClick={playCrunch}
               >
+                {/* Moon Icon Hover Effect Above */}
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 text-accent transform translate-y-1 group-hover:translate-y-0">
+                  <Moon size={10} fill="currentColor" />
+                </span>
+                
                 {link.name}
+
+                {/* Animated Underline */}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
               </Link>
             ))}
           </div>
 
           <div className="hidden lg:flex items-center gap-6">
+            {/* Search Bar Implementation */}
+            <div className="relative flex items-center">
+              <AnimatePresence>
+                {isSearchOpen && (
+                  <motion.input
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 200, opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    className="bg-surface/50 border border-muted/20 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-accent mr-2"
+                    placeholder="Search snacks..."
+                    autoFocus
+                  />
+                )}
+              </AnimatePresence>
+              <button 
+                onClick={() => setIsSearchOpen(!isSearchOpen)} 
+                className="hover:text-accent transition-colors"
+                aria-label="Search"
+              >
+                <Search size={20} />
+              </button>
+            </div>
+
             <button onClick={toggleTheme} aria-label="Toggle Theme" className="hover:text-accent transition-colors">
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -74,9 +107,9 @@ export function Navbar() {
             </button>
             <button
               className="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-medium transition-colors transform hover:scale-105 active:scale-95 duration-200 ease-out"
-              onClick={() => { playCrunch(); alert("Notify form opening..."); }}
+              onClick={() => { playCrunch(); alert("Building box..."); }}
             >
-              Notify Me
+              Build your night Box
             </button>
           </div>
 
@@ -120,9 +153,9 @@ export function Navbar() {
           </div>
           <button
             className="mt-6 bg-accent hover:bg-accent-hover text-white px-8 py-4 text-xl rounded-full font-medium transition-colors"
-            onClick={() => { playCrunch(); alert("Notify form opening..."); setMobileOpen(false); }}
+            onClick={() => { playCrunch(); alert("Building box..."); setMobileOpen(false); }}
           >
-            Notify Me
+            Build your night Box
           </button>
         </div>
       </div>
