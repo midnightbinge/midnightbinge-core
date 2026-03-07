@@ -1,11 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function StoryPage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalSlides = 6;
+  
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" as const } }
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   return (
@@ -33,35 +46,78 @@ export default function StoryPage() {
         </motion.div>
       </section>
 
-      {/* 2. The Visual Story */}
-      <section className="py-24 md:py-40 bg-surface relative">
-        <div className="container mx-auto px-6 md:px-12 max-w-7xl">
-          <div className="text-center mb-16 md:mb-24">
+      {/* 2. The Visual Story (Carousel) */}
+      <section className="py-24 md:py-40 bg-surface relative overflow-hidden">
+        <div className="brand-pattern-bg opacity-[0.02]" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-display text-foreground mb-6">Two Brothers. One Problem.</h2>
             <p className="text-xl text-muted font-body max-w-2xl mx-auto">
               Unable to find a snacking brand that neither made them feel guilty, nor scared them. They could've stayed consumers, but they chose to become creators.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {[1, 2, 3, 4, 5, 6].map((num) => (
-              <motion.div
-                key={num}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`w-full overflow-hidden rounded-3xl border border-foreground/5 bg-background shadow-xl ${
-                  num === 1 || num === 6 ? 'md:col-span-2 md:w-3/4 md:mx-auto' : ''
-                }`}
-              >
-                <img 
-                  src={`/story/story_page_${num}.png`} 
-                  alt={`Midnight Story Part ${num}`} 
-                  className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700 ease-out" 
+          <div className="relative max-w-5xl mx-auto">
+            {/* Main Carousel Area */}
+            <div className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden rounded-3xl border border-foreground/10 bg-background shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  <img 
+                    src={`/story/story_page_${currentIndex + 1}.png`} 
+                    alt={`Midnight Story Page ${currentIndex + 1}`} 
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation Arrows */}
+              <div className="absolute inset-y-0 left-0 flex items-center px-4 md:px-8">
+                <button 
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all shadow-lg active:scale-90"
+                  aria-label="Previous Story"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center px-4 md:px-8">
+                <button 
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all shadow-lg active:scale-90"
+                  aria-label="Next Story"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+            </div>
+
+            {/* Pagination / Progress */}
+            <div className="mt-8 flex items-center justify-center gap-3">
+              {[...Array(totalSlides)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    currentIndex === i ? "w-12 bg-accent" : "w-4 bg-muted/30 hover:bg-muted/50"
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
                 />
-              </motion.div>
-            ))}
+              ))}
+            </div>
+            
+            <div className="mt-4 text-center">
+              <p className="text-muted text-sm font-medium tracking-widest uppercase">
+                Step {currentIndex + 1} <span className="mx-2 opacity-30">/</span> {totalSlides}
+              </p>
+            </div>
           </div>
         </div>
       </section>
