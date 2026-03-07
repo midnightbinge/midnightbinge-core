@@ -148,14 +148,14 @@ export function Hero() {
         <Link 
           href="/range"
           onClick={playCrunch}
-          className="px-10 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
+          className="px-10 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/30"
         >
           Explore the Range
         </Link>
         <Link 
           href="/story"
           onClick={playCrunch}
-          className="px-10 py-5 border-2 border-foreground/20 hover:border-accent hover:text-accent text-foreground rounded-full font-medium transition-all hover:bg-accent/5"
+          className="px-10 py-5 border-2 border-foreground/20 hover:border-accent hover:text-accent text-foreground rounded-full font-medium transition-all hover:bg-accent/10"
         >
           Our Story
         </Link>

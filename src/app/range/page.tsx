@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAudio } from "@/components/AudioProvider";
-import { FlavorQuiz } from "@/components/range/FlavorQuiz";
+import { SpinWheel } from "@/components/home/SpinWheel";
 
 const allProducts = [
   // Flavoured
@@ -152,8 +152,8 @@ function RangeContent() {
         </motion.div>
       </section>
 
-      {/* Flavor Mood Quiz */}
-      <FlavorQuiz />
+      {/* Discount Reward Section */}
+      <SpinWheel />
     </div>
   );
 }

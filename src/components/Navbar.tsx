@@ -48,9 +48,9 @@ export function Navbar() {
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/" className="flex-shrink-0">
             {theme === "dark" ? (
-              <img src="/assets/logo-white.png" alt="Midnight Logo" className="h-10 md:h-14 w-auto object-contain transition-all duration-300" />
+              <img src="/assets/logo-white.png" alt="Midnight Logo" className="h-12 md:h-16 w-auto object-contain transition-all duration-300" />
             ) : (
-              <img src="/assets/logo-black.png" alt="Midnight Logo" className="h-10 md:h-14 w-auto object-contain transition-all duration-300" />
+              <img src="/assets/logo-black.png" alt="Midnight Logo" className="h-12 md:h-16 w-auto object-contain transition-all duration-300" />
             )}
           </Link>
 
@@ -59,7 +59,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.path}
-                className="group relative py-2 text-sm font-medium transition-colors"
+                className="group relative py-2 text-sm font-medium transition-colors whitespace-nowrap"
                 onClick={playCrunch}
               >
                 {/* Moon Icon Hover Effect Above */}
@@ -76,37 +76,11 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-6">
-            {/* Search Bar Implementation */}
-            <div className="relative flex items-center">
-              <AnimatePresence>
-                {isSearchOpen && (
-                  <motion.input
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 200, opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="bg-surface/50 border border-muted/20 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-accent mr-2"
-                    placeholder="Search snacks..."
-                    autoFocus
-                  />
-                )}
-              </AnimatePresence>
-              <button 
-                onClick={() => setIsSearchOpen(!isSearchOpen)} 
-                className="hover:text-accent transition-colors"
-                aria-label="Search"
-              >
-                <Search size={20} />
-              </button>
-            </div>
-
-            <button onClick={toggleTheme} aria-label="Toggle Theme" className="hover:text-accent transition-colors">
+            <button onClick={toggleTheme} aria-label="Toggle Theme" className="hover:text-accent transition-colors p-2">
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <button onClick={toggleMute} aria-label="Toggle Sound" className="hover:text-accent transition-colors">
-              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-            </button>
             <button
-              className="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full font-medium transition-colors transform hover:scale-105 active:scale-95 duration-200 ease-out"
+              className="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
               onClick={() => { playCrunch(); alert("Building box..."); }}
             >
               Build your night Box
