@@ -16,7 +16,7 @@ const slides = [
   {
     id: 2,
     type: "mockup",
-    image: "/products/04.png",
+    image: "/products/peri_peri_rush.png",
     tagline: "The Midnight Crunch",
     subline: "Bold flavors that don't compromise on wellness."
   },
@@ -52,6 +52,7 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-background pt-20">
+      <div className="brand-pattern-bg opacity-[0.03]" />
       
       {/* Background Parallax Layer */}
       <motion.div 

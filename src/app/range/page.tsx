@@ -9,22 +9,24 @@ import { FlavorQuiz } from "@/components/range/FlavorQuiz";
 
 const allProducts = [
   // Flavoured
-  { id: "thai-chilli", name: "Thai Sweet Chilli", desc: "Bold and bright. A crunch that goes all night.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "thai-sweet-chilli", isGlobal: false, image: "/products/01.png" },
-  { id: "peri-peri", name: "Peri Peri", desc: "A little heat for a long evening.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "peri-peri", isGlobal: false, image: "/products/02.png" },
-  { id: "cheese", name: "Cheddar Cheese", desc: "Comfort you can hear.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "cheddar-cheese", isGlobal: false, image: "/products/03.png" },
-  { id: "tandoori", name: "Tandoori Barbeque", desc: "Smoky. Slow. Satisfying.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "tandoori-barbeque", isGlobal: false, image: "/products/04.png" },
-  { id: "mint", name: "Jalapeno Mint", desc: "Cool outside. Warm inside. Just like you.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "jalapeno-mint", isGlobal: false, image: "/products/05.png" },
-  { id: "salt-pepper", name: "Himalayan Salt and Pepper", desc: "Simple. Honest. Right.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "himalayan-salt-pepper", isGlobal: false, image: "/products/06.png" },
+  { id: "thai-chilli", name: "Thai Sweet Chilli", desc: "Bold and bright. A crunch that goes all night.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "thai-sweet-chilli", isGlobal: false, image: "/products/thai_sweet_chilli.png" },
+  { id: "peri-peri", name: "Peri Peri Rush", desc: "A little heat for a long evening.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "peri-peri-rush", isGlobal: false, image: "/products/peri_peri_rush.png" },
+  { id: "cheese", name: "Cheddar Cheese Comfort", desc: "Comfort you can hear.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "cheddar-cheese-comfort", isGlobal: false, image: "/products/cheddar_cheese_comfort.png" },
+  { id: "tandoori", name: "Tandoor Barbeque", desc: "Smoky. Slow. Satisfying.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "tandoor-barbeque", isGlobal: false, image: "/products/tandoor_barbeque.png" },
+  { id: "mint", name: "Jalapeno Mint", desc: "Cool outside. Warm inside. Just like you.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "jalapeno-mint", isGlobal: false, image: "/products/jalapeno_mint.png" },
+  { id: "salt-pepper", name: "Himalayan Salt and Pepper", desc: "Simple. Honest. Right.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "himalayan-salt-pepper", isGlobal: false, image: "/products/himalayan_salt_and_pepper.png" },
   // Coming Soon / Global
   { id: "truffle", name: "Truffle", desc: "Earthy, rich, unforgettable.", category: "Flavoured Makhana", sizes: [], price: "", slug: "truffle", isGlobal: true, image: "/products/07.png" },
   
   // Raw
-  { id: "raw-makhana", name: "Pure Raw Makhana", desc: "Nothing added. Nothing hidden.", category: "Raw Makhana", sizes: ["100g", "200g"], price: "₹200 - ₹380", slug: "raw-makhana", isGlobal: false, image: "/products/01.png" },
+  { id: "raw-makhana", name: "Pure Raw Makhana", desc: "Nothing added. Nothing hidden.", category: "Raw Makhana", sizes: ["100g", "200g"], price: "₹200 - ₹380", slug: "raw-makhana", isGlobal: false, image: "/products/raw_makhana.png" },
 
   // Cripso
-  { id: "achari", name: "Achari Punch", desc: "A crunch that catches you off guard.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "achari-punch", isGlobal: false, image: "/products/02.png" },
-  { id: "mexican", name: "Mexican Tomato", desc: "Bright, bold, and gone too fast.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "mexican-tomato", isGlobal: false, image: "/products/03.png" },
-  { id: "korean", name: "Fiesty Korean", desc: "Some cravings don't wait for permission.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "fiesty-korean", isGlobal: false, image: "/products/04.png" },
+  { id: "achari", name: "Achari Punch Crispo", desc: "A crunch that catches you off guard.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "achari-punch-crispo", isGlobal: false, image: "/products/achari_punch_crispo.png" },
+  { id: "mexican", name: "Tomato Mexicana Crispo", desc: "Bright, bold, and gone too fast.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "tomato-mexicana-crispo", isGlobal: false, image: "/products/tomato_mexicana_crispo.png" },
+  { id: "korean", name: "Fiesty Korean Crispo", desc: "Some cravings don't wait for permission.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "fiesty-korean-crispo", isGlobal: false, image: "/products/fiesty_korean_cripso.png" },
+  { id: "mystery", name: "Mystery Masala Crispo", desc: "A flavour that keeps you guessing.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "mystery-masala-crispo", isGlobal: false, image: "/products/mystery_masala_crispo.png" },
+  { id: "ranch", name: "Ranch-O-Cheese Crispo", desc: "Creamy, cheesy, and absolutely addictive.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "ranch-o-cheese-crispo", isGlobal: false, image: "/products/ranch_o_cheese_cripso.png" },
 ];
 
 const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"];

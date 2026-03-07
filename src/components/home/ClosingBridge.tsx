@@ -7,7 +7,7 @@ export function ClosingBridge() {
   const { playCrunch } = useAudio();
 
   return (
-    <section className="py-40 bg-background flex flex-col items-center justify-center text-center px-6">
+    <section className="py-40 bg-background flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"><div className="brand-pattern-bg opacity-[0.02]" />
       <h2 className="text-4xl md:text-6xl lg:text-7xl font-display text-foreground max-w-4xl mx-auto leading-tight mb-12">
         Everyone has a Midnight. <br/>
         <span className="text-muted">Now it has a snack.</span>
