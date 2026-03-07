@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAudio } from "@/components/AudioProvider";
 import { FlavorQuiz } from "@/components/range/FlavorQuiz";
 
@@ -28,9 +29,19 @@ const allProducts = [
 
 const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"];
 
-export default function RangePage() {
+function RangeContent() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
   const [activeTab, setActiveTab] = useState("All");
   const { playCrunch } = useAudio();
+
+  useEffect(() => {
+    if (categoryParam) {
+      if (categoryParam === "flavoured-makhana") setActiveTab("Flavoured Makhana");
+      else if (categoryParam === "raw-makhana") setActiveTab("Raw Makhana");
+      else if (categoryParam === "cripso") setActiveTab("Cripso");
+    }
+  }, [categoryParam]);
 
   const filteredProducts = activeTab === "All" 
     ? allProducts 
@@ -82,7 +93,7 @@ export default function RangePage() {
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
               <motion.div
                 key={product.id}
@@ -142,5 +153,13 @@ export default function RangePage() {
       {/* Flavor Mood Quiz */}
       <FlavorQuiz />
     </div>
+  );
+}
+
+export default function RangePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+      <RangeContent />
+    </Suspense>
   );
 }
