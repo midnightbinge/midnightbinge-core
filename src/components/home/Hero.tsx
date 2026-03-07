@@ -142,7 +142,7 @@ export function Hero() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 3.5, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 5.2, ease: "easeOut" }}
         className="relative z-20 flex flex-col sm:flex-row gap-6 items-center mt-12 mb-12"
       >
         <Link 
