@@ -73,7 +73,7 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
   - **Hero**: Optimized CTA buttons for visibility across all themes.
 - **Asset Sync**: Fully synchronized all public assets with the latest named brand identity guidelines.
 - **Favicon**: Updated to the more aesthetic **White Curved TM** variant.
-- Updated support contact to `wecare@midnightbinge.com`.
+- Updated support contact to `wecare@midnightbinge.com` and added phone support at `+91 9217020447`.
 
 ---
 &copy; 2026 Midnight Binge. All rights reserved.

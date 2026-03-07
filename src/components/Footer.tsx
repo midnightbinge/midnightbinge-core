@@ -39,6 +39,11 @@ export function Footer() {
           <Link href="/snack-smart" className="hover:text-accent transition-colors w-fit" onClick={playCrunch}>Snack Smart</Link>
           <Link href="/gifts" className="hover:text-accent transition-colors w-fit" onClick={playCrunch}>Gifts</Link>
           <Link href="/contact" className="hover:text-accent transition-colors w-fit" onClick={playCrunch}>Contact</Link>
+          
+          <div className="mt-4 pt-4 border-t border-muted/10 space-y-2">
+            <a href="tel:+919217020447" className="block text-sm text-muted hover:text-accent transition-colors">+91 9217020447</a>
+            <a href="mailto:wecare@midnightbinge.com" className="block text-sm text-muted hover:text-accent transition-colors">wecare@midnightbinge.com</a>
+          </div>
         </div>
 
         {/* Right Column */}
