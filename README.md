@@ -21,6 +21,7 @@ The application reflects a "Midnight" aesthetic—sophisticated, moody, yet comf
 - **Typography**: 
   - Display: `Elsie` (Serif)
   - Body: `Poppins` (Sans-serif)
+- **Iconography**: New brand-consistent favicon integrated from the Midnight Logo Suite.
 
 ## 🛠 Technical Architecture
 
@@ -30,9 +31,11 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
 - **Persistence**: Theme preference is saved in `localStorage`.
 - **CSS Variables**: Colors, spacing, and transitions are defined in `src/app/globals.css`.
 
-### Global Animations
-- **Entrance Animation**: A timed loading sequence (EntranceAnimation.tsx) that sets the mood before the main content reveals.
-- **Micro-interactions**: Hover effects, smooth transitions, and crunch sound effects integrated via `AudioProvider`.
+### Global Animations & UI Features
+- **Hero Slider**: Auto-rotating slider featuring lifestyle "emotion" shots and high-fidelity product mockups.
+- **Category Grid**: Interactive category-based exploration (Roasted, Raw, Cripso) with deep-linking to the Range.
+- **Mood Selector**: Enhanced "What's your Midnight?" experience with hover-reveal product pairings.
+- **Expandable Search**: Integrated navigation search bar with Framer Motion.
 - **Brand Patterns**: Subtle, repeating brand patterns (`.brand-pattern-bg`) are integrated into section backgrounds across the site.
 
 ### Folder Structure
@@ -41,6 +44,7 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
   - `home/`: Homepage specific sections (Hero, MoodSelector, SpinWheel, etc.)
   - `range/`: Components related to the product catalog.
 - `public/assets`: Brand assets, logos, and textures.
+- `public/products`: Mapped packaging assets synced with brand artifacts.
 - `public/fonts`: Custom local font files.
 
 ## 📦 Getting Started
@@ -61,6 +65,9 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
    ```
 
 ## 📝 Recent Improvements
+- **Phased Upgrades**: 
+  - Phase 1: Navigation overhaul, logo resizing, and custom hover animations.
+  - Phase 2: Home page restructure with Hero Slider, Category Grid, and full Packaging mapping.
 - Optimized loading animation speed (30% faster).
 - Refined Light Mode with *Pale Lavender* palette and improved form styling.
 - Integrated subtle brand pattern backgrounds across all major pages.

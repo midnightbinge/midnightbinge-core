@@ -22,7 +22,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-32 bg-surface">
+    <section className="py-32 bg-surface relative overflow-hidden"><div className="brand-pattern-bg opacity-[0.02]" />
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-4xl md:text-5xl font-display font-medium text-foreground mb-16 text-center">
           Real nights. Real people.
