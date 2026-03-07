@@ -29,7 +29,7 @@ export function EntranceAnimation() {
 
     const resolveTimer = setTimeout(() => {
       setIsVisible(false);
-    }, 5500); // Slightly longer to appreciate the rain
+    }, 5500);
 
     return () => {
       clearTimeout(flipTimer);
@@ -37,17 +37,17 @@ export function EntranceAnimation() {
     };
   }, []);
 
-  // Optimized rain with depth and variety
+  // Refined rain with smaller, more consistent pieces and sharp high-contrast visuals
   const makhanaPieces = useMemo(() => {
-    return Array.from({ length: 35 }).map((_, i) => ({
+    return Array.from({ length: 45 }).map((_, i) => ({
       id: i,
       src: rainAssets[Math.floor(Math.random() * rainAssets.length)],
       left: `${Math.random() * 100}%`,
-      duration: 2.5 + Math.random() * 3.5,
-      delay: Math.random() * 1.5,
-      size: 15 + Math.random() * 30, // Smaller packets for realism
+      duration: 3 + Math.random() * 2, // More consistent falling speed
+      delay: Math.random() * 2,
+      baseSize: 12 + Math.random() * 8, // Significantly smaller and more consistent
       rotate: Math.random() * 360,
-      zDepth: Math.floor(Math.random() * 3), // 0: back (small/blur), 1: mid, 2: front (large/sharp)
+      zDepth: Math.floor(Math.random() * 3), // 0: back, 1: mid, 2: front
     }));
   }, []);
 
@@ -69,7 +69,7 @@ export function EntranceAnimation() {
             transition={{ duration: 3, ease: "easeOut" }}
           />
 
-          {/* Cinematic Rain Effect */}
+          {/* Cinematic Rain Effect - Sharp & HDR */}
           {isMidnight && (
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               {makhanaPieces.map((piece) => (
@@ -77,21 +77,18 @@ export function EntranceAnimation() {
                   key={piece.id}
                   src={piece.src}
                   alt="Falling Pack"
-                  className={`absolute object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] ${
-                    piece.zDepth === 0 ? "blur-[2px] opacity-20" : 
-                    piece.zDepth === 1 ? "blur-[0.5px] opacity-40" : 
-                    "blur-0 opacity-60 brightness-110"
-                  }`}
+                  className="absolute object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] brightness-110 contrast-125"
                   style={{ 
                     left: piece.left, 
-                    width: piece.size * (1 + piece.zDepth * 0.5), 
-                    top: -150,
-                    zIndex: piece.zDepth
+                    width: piece.baseSize * (1 + piece.zDepth * 0.3), 
+                    top: -100,
+                    zIndex: piece.zDepth,
+                    opacity: 0.3 + (piece.zDepth * 0.2) // More consistent opacity range
                   }}
                   initial={{ y: 0, rotate: piece.rotate }}
-                  animate={{ y: "130vh", rotate: piece.rotate + 720 }}
+                  animate={{ y: "130vh", rotate: piece.rotate + 360 }}
                   transition={{ 
-                    duration: piece.duration / (1 + piece.zDepth * 0.2), 
+                    duration: piece.duration, 
                     delay: piece.delay, 
                     ease: "linear" 
                   }}
@@ -100,19 +97,19 @@ export function EntranceAnimation() {
             </div>
           )}
 
-          {/* Digital Clock */}
+          {/* Digital Clock - Removed blur for instant clarity */}
           <motion.div
             key={time}
-            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="text-8xl md:text-[14rem] font-display font-medium tracking-tighter relative z-[10] text-foreground drop-shadow-[0_0_30px_rgba(107,92,231,0.2)]"
           >
             {time}
           </motion.div>
 
-          {/* Brand Tagline restyled for compliance */}
+          {/* Brand Tagline */}
           <AnimatePresence>
             {showTagline && (
               <motion.div
