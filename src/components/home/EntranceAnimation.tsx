@@ -12,6 +12,7 @@ const rainAssets = [
   "/products/peri_bop.png",
   "/products/cheese_bop.png",
   "/products/mint_bop.png",
+  "/products/raw_makhana.png",
 ];
 
 export function EntranceAnimation() {

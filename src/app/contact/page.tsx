@@ -73,7 +73,10 @@ export default function ContactPage() {
         {/* Footer Note */}
         <div className="mt-16 text-center flex flex-col items-center gap-6 border-t border-white/10 pt-16">
           <p className="text-foreground font-display text-lg">We read everything. We reply within 24 hours.</p>
-          <a href="mailto:wecare@midnightbinge.com" className="text-muted hover:text-accent transition-colors font-medium">wecare@midnightbinge.com</a>
+          <div className="flex flex-col gap-2">
+            <a href="mailto:wecare@midnightbinge.com" className="text-muted hover:text-accent transition-colors font-medium text-lg">wecare@midnightbinge.com</a>
+            <a href="tel:+919217020447" className="text-muted hover:text-accent transition-colors font-medium text-lg">+91 9217020447</a>
+          </div>
           <div className="flex gap-4">
             <a href="#" className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center hover:border-accent hover:text-accent transition-all">IG</a>
             <a href="#" className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center hover:border-accent hover:text-accent transition-all">YT</a>
