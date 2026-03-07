@@ -21,7 +21,7 @@ The application reflects a "Midnight" aesthetic—sophisticated, moody, yet comf
 - **Typography**: 
   - Display: `Elsie` (Serif)
   - Body: `Poppins` (Sans-serif)
-- **Iconography**: Official brand-consistent favicon integrated from the Midnight Logo Suite.
+- **Iconography**: Official **White Curved TM** icon integrated as the primary site favicon.
 
 ## 🛠 Technical Architecture
 
@@ -32,7 +32,7 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
 - **CSS Variables**: Colors, spacing, and transitions are defined in `src/app/globals.css`.
 
 ### Global Animations & UI Features
-- **Cinematic Entrance**: A timed loading sequence with a digital clock that flips to 12:00, triggering a "falling makhana rain" effect.
+- **Cinematic Entrance**: A high-fidelity loading sequence featuring a digital clock, brand-compliant typography, and a 3D-parallax "makhana rain" effect.
 - **Hero Slider**: Auto-rotating slider featuring lifestyle "emotion" shots and high-fidelity product mockups.
 - **Category Grid**: Interactive category-based exploration (Roasted, Raw, Cripso) with deep-linking to the Range.
 - **Mood Selector**: Enhanced "What's your Midnight?" experience with hover-reveal product pairings.
@@ -44,8 +44,8 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
 - `src/components`: Reusable UI components.
   - `home/`: Homepage specific sections (Hero, MoodSelector, SpinWheel, etc.)
   - `range/`: Components related to the product catalog.
-- `public/assets`: Brand assets, logos, and textures.
-- `public/products`: Mapped packaging assets synced with brand artifacts.
+- `public/assets`: Synchronized brand assets, patterns, and logos.
+- `public/products`: Mapped packaging assets (FOP/BOP) synced with high-HDR brand artifacts.
 - `public/fonts`: Custom local font files.
 
 ## 📦 Getting Started
@@ -69,10 +69,10 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
 - **Phased Upgrades Complete**: 
   - **Phase 1**: Navigation overhaul, logo resizing, and custom hover animations.
   - **Phase 2**: Home page restructure with Hero Slider, Category Grid, and full Packaging mapping.
-  - **Phase 3**: Cinematic loading sequence with "falling makhana" at midnight.
+  - **Phase 3**: Refined cinematic loading sequence with high-depth "makhana rain" and compliant branding.
+- **Asset Sync**: Fully synchronized all public assets with the latest named brand identity guidelines.
+- **Favicon**: Updated to the more aesthetic **White Curved TM** variant.
 - Refined Light Mode with *Pale Lavender* palette and improved form styling.
-- Integrated subtle brand pattern backgrounds across all major pages.
-- Standardized `text-foreground` and `bg-background` usage for theme consistency.
 - Updated support contact to `wecare@midnightbinge.com`.
 
 ---
