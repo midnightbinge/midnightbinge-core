@@ -45,7 +45,7 @@ export function Navbar() {
           scrolled ? "bg-background/80 backdrop-blur-md py-4" : "bg-transparent py-6"
         )}
       >
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
+        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/" className="flex-shrink-0">
             {theme === "dark" ? (
               <img src="/assets/logo-white.png" alt="Midnight Logo" className="h-12 md:h-16 w-auto object-contain transition-all duration-300" />
@@ -54,7 +54,7 @@ export function Navbar() {
             )}
           </Link>
 
-          <div className="hidden lg:flex items-center gap-8 xl:gap-10 overflow-x-auto no-scrollbar py-2">
+          <div className="hidden lg:flex items-center gap-10">
             {links.map((link) => (
               <Link
                 key={link.name}
@@ -75,38 +75,12 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6 flex-shrink-0">
-            {/* Search Bar Implementation */}
-            <div className="relative flex items-center">
-              <AnimatePresence>
-                {isSearchOpen && (
-                  <motion.input
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 160, opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="bg-surface/50 border border-muted/20 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-accent mr-2"
-                    placeholder="Search..."
-                    autoFocus
-                  />
-                )}
-              </AnimatePresence>
-              <button 
-                onClick={() => setIsSearchOpen(!isSearchOpen)} 
-                className="hover:text-accent transition-colors p-2"
-                aria-label="Search"
-              >
-                <Search size={18} />
-              </button>
-            </div>
-
+          <div className="hidden lg:flex items-center gap-6">
             <button onClick={toggleTheme} aria-label="Toggle Theme" className="hover:text-accent transition-colors p-2">
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-            <button onClick={toggleMute} aria-label="Toggle Sound" className="hover:text-accent transition-colors p-2">
-              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
-              className="bg-accent hover:bg-accent-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all transform active:scale-95 shadow-md hover:shadow-accent/20"
+              className="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
               onClick={() => { playCrunch(); alert("Building box..."); }}
             >
               Build your night Box
