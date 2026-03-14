@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useAudio } from "@/components/AudioProvider";
-import { SpinWheel } from "@/components/home/SpinWheel";
 import { products, Product } from "@/data/products";
 
 const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"] as const;
@@ -140,8 +139,14 @@ function RangeContent() {
         </motion.div>
       </section>
 
-      {/* Discount Reward Section */}
-      <SpinWheel />
+      {/* Atmospheric Closing */}
+      <section className="py-32 bg-secondary/30 relative overflow-hidden border-t border-foreground/5">
+        <div className="brand-pattern-bg opacity-[0.02]" />
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <p className="font-accent text-3xl text-foreground mb-6">"Better that feels Good."</p>
+          <p className="text-muted max-w-md mx-auto">Until next time, snack better. Feel good.</p>
+        </div>
+      </section>
     </div>
   );
 }
