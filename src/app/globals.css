@@ -5,9 +5,16 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--color-surface);
   --color-secondary: var(--color-secondary);
-  --color-accent: var(--color-accent);
-  --color-accent-hover: var(--color-accent-hover);
-  --color-warm: var(--color-warm);
+  
+  /* Official Brand Palette */
+  --color-accent: var(--color-accent); /* Nobel Teal */
+  --color-accent-hover: var(--color-accent-hover); /* Tiber */
+  --color-warm: var(--color-warm); /* Coral Candy */
+  --color-mauve: #ffd7f9;
+  --color-clinker: #381c07;
+  --color-tiber: #002e3a;
+  --color-nobel-teal: #045866;
+  
   --color-muted: var(--color-muted);
   --color-brand-cream: var(--color-brand-cream);
   --color-input: var(--color-input);
@@ -17,6 +24,14 @@
 @font-face {
   font-family: 'Elsie';
   src: url('/fonts/Elsie-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Borel';
+  src: url('/fonts/Borel-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -58,11 +73,11 @@
   /* Mysterious Depths - Dark Identity (Default) */
   --background: #060b28;
   --foreground: #F4F1EB;
-  --color-surface: #111845;
-  --color-secondary: #0a113a;
-  --color-accent: #6B5CE7;
-  --color-accent-hover: #5849D6;
-  --color-warm: #F0C070;
+  --color-surface: #0a113a;
+  --color-secondary: #002e3a; /* Tiber */
+  --color-accent: #045866; /* Nobel Teal */
+  --color-accent-hover: #002e3a; /* Tiber */
+  --color-warm: #ffe4d9; /* Coral Candy */
   --color-muted: #888AAA;
   --color-brand-cream: #FAF5E9;
   --color-input: rgba(0, 0, 0, 0.3);
@@ -70,6 +85,7 @@
   
   --font-display: 'Elsie', serif;
   --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Borel', cursive;
 }
 
 /* Day Mode (Pale Lavender) */
@@ -78,13 +94,13 @@
   --foreground: #060b28;
   --color-surface: #e4e1ff;
   --color-secondary: #c9c4ff;
-  --color-accent: #6B5CE7;
-  --color-accent-hover: #5849D6;
-  --color-warm: #E0A840;
+  --color-accent: #045866; /* Nobel Teal */
+  --color-accent-hover: #002e3a; /* Tiber */
+  --color-warm: #381c07; /* Clinker for grounding in light mode */
   --color-muted: #6A6D88;
   --color-brand-cream: #060b28;
   --color-input: rgba(255, 255, 255, 0.5);
-  --color-input-border: rgba(107, 92, 231, 0.2);
+  --color-input-border: rgba(4, 88, 102, 0.2);
 }
 
 body {
@@ -109,7 +125,7 @@ body {
 
 .day-mode .brand-pattern-bg {
   opacity: 0.07;
-  filter: brightness(0) saturate(100%) invert(8%) sepia(34%) mid(38%) hue-rotate(224deg) brightness(92%) contrast(101%); /* Match #060b28 roughly */
+  filter: brightness(0) saturate(100%) invert(8%) sepia(34%) mid(38%) hue-rotate(224deg) brightness(92%) contrast(101%);
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
@@ -118,6 +134,10 @@ h1, h2, h3, h4, h5, h6, .font-display {
   color: var(--color-brand-cream);
   position: relative;
   z-index: 1;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
 }
 
 .day-mode h1:not(.keep-white), 
@@ -155,4 +175,12 @@ input, textarea, select {
 input::placeholder, textarea::placeholder {
   color: var(--foreground);
   opacity: 0.5;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
