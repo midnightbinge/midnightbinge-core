@@ -60,7 +60,7 @@ export default function RootLayout({
           <Analytics />
           <MakhanaFloat />
           <Navbar />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

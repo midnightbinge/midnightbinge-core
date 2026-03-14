@@ -9,6 +9,11 @@ export interface RelatedProduct {
   image: string;
 }
 
+export interface QuickCommerce {
+  name: "Blinkit" | "Zepto" | "Amazon";
+  url: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -24,7 +29,14 @@ export interface Product {
   color: string;
   isGlobal?: boolean;
   related: RelatedProduct[];
+  quickCommerce?: QuickCommerce[];
 }
+
+const DEFAULT_QC: QuickCommerce[] = [
+  { name: "Blinkit", url: "https://blinkit.com/s/?q=midnight+binge" },
+  { name: "Zepto", url: "https://www.zeptonow.com/search?query=midnight+binge" },
+  { name: "Amazon", url: "https://www.amazon.in/s?k=midnight+binge" },
+];
 
 export const products: Product[] = [
   {
@@ -43,7 +55,8 @@ export const products: Product[] = [
     related: [
       { name: "Peri Peri Rush", slug: "peri-peri-rush", image: "/products/peri_peri_rush.png" },
       { name: "Achari Punch Crispo", slug: "achari-punch-crispo", image: "/products/achari_punch_crispo.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "peri-peri",
@@ -61,7 +74,8 @@ export const products: Product[] = [
     related: [
       { name: "Thai Sweet Chilli", slug: "thai-sweet-chilli", image: "/products/thai_sweet_chilli.png" },
       { name: "Tomato Mexicana Crispo", slug: "tomato-mexicana-crispo", image: "/products/tomato_mexicana_crispo.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "cheese",
@@ -79,7 +93,8 @@ export const products: Product[] = [
     related: [
       { name: "Ranch-O-Cheese Crispo", slug: "ranch-o-cheese-crispo", image: "/products/ranch_o_cheese_cripso.png" },
       { name: "Himalayan Salt and Pepper", slug: "himalayan-salt-pepper", image: "/products/himalayan_salt_and_pepper.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "tandoori",
@@ -97,7 +112,8 @@ export const products: Product[] = [
     related: [
       { name: "Thai Sweet Chilli", slug: "thai-sweet-chilli", image: "/products/thai_sweet_chilli.png" },
       { name: "Achari Punch Crispo", slug: "achari-punch-crispo", image: "/products/achari_punch_crispo.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "mint",
@@ -115,7 +131,8 @@ export const products: Product[] = [
     related: [
       { name: "Himalayan Salt and Pepper", slug: "himalayan-salt-pepper", image: "/products/himalayan_salt_and_pepper.png" },
       { name: "Pure Raw Makhana", slug: "raw-makhana", image: "/products/raw_makhana.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "salt-pepper",
@@ -133,7 +150,8 @@ export const products: Product[] = [
     related: [
       { name: "Pure Raw Makhana", slug: "raw-makhana", image: "/products/raw_makhana.png" },
       { name: "Jalapeno Mint", slug: "jalapeno-mint", image: "/products/jalapeno_mint.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "raw-makhana",
@@ -151,7 +169,8 @@ export const products: Product[] = [
     related: [
       { name: "Himalayan Salt and Pepper", slug: "himalayan-salt-pepper", image: "/products/himalayan_salt_and_pepper.png" },
       { name: "Jalapeno Mint", slug: "jalapeno-mint", image: "/products/jalapeno_mint.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "achari",
@@ -169,7 +188,8 @@ export const products: Product[] = [
     related: [
       { name: "Tomato Mexicana Crispo", slug: "tomato-mexicana-crispo", image: "/products/tomato_mexicana_crispo.png" },
       { name: "Tandoor Barbeque", slug: "tandoor-barbeque", image: "/products/tandoor_barbeque.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "mexican",
@@ -187,7 +207,8 @@ export const products: Product[] = [
     related: [
       { name: "Fiesty Korean Crispo", slug: "fiesty-korean-crispo", image: "/products/fiesty_korean_cripso.png" },
       { name: "Peri Peri Rush", slug: "peri-peri-rush", image: "/products/peri_peri_rush.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "korean",
@@ -205,7 +226,8 @@ export const products: Product[] = [
     related: [
       { name: "Tomato Mexicana Crispo", slug: "tomato-mexicana-crispo", image: "/products/tomato_mexicana_crispo.png" },
       { name: "Mystery Masala Crispo", slug: "mystery-masala-crispo", image: "/products/mystery_masala_crispo.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "mystery",
@@ -223,7 +245,8 @@ export const products: Product[] = [
     related: [
       { name: "Fiesty Korean Crispo", slug: "fiesty-korean-crispo", image: "/products/fiesty_korean_cripso.png" },
       { name: "Ranch-O-Cheese Crispo", slug: "ranch-o-cheese-crispo", image: "/products/ranch_o_cheese_cripso.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "ranch",
@@ -241,7 +264,8 @@ export const products: Product[] = [
     related: [
       { name: "Mystery Masala Crispo", slug: "mystery-masala-crispo", image: "/products/mystery_masala_crispo.png" },
       { name: "Cheddar Cheese Comfort", slug: "cheddar-cheese-comfort", image: "/products/cheddar_cheese_comfort.png" }
-    ]
+    ],
+    quickCommerce: DEFAULT_QC
   },
   {
     id: "truffle",
