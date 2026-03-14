@@ -22,7 +22,7 @@ export default function WhatsInsidePage() {
           variants={fadeUp}
           className="text-5xl md:text-7xl font-display text-foreground mb-6"
         >
-          What's Inside<span className="text-accent">.</span>
+          What&apos;s Inside<span className="text-accent">.</span>
         </motion.h1>
         <motion.p 
           initial="hidden"
@@ -31,7 +31,7 @@ export default function WhatsInsidePage() {
           variants={fadeUp}
           className="text-xl md:text-2xl text-muted font-display italic max-w-2xl mx-auto"
         >
-          "Because knowing what you're reaching for shouldn't feel like a lecture. <span className="text-accent font-accent not-italic">It should feel like a choice.</span>"
+          &ldquo;Because knowing what you&apos;re reaching for shouldn&apos;t feel like a lecture. <span className="text-accent font-accent not-italic">It should feel like a choice.</span>&rdquo;
         </motion.p>
       </section>
 
@@ -49,10 +49,10 @@ export default function WhatsInsidePage() {
           </div>
           <h2 className="text-3xl md:text-4xl font-display text-foreground mb-6">Honest Ingredients</h2>
           <p className="text-muted text-lg leading-relaxed mb-6">
-            Sourced from the wetlands of Bihar, makhana (popped lotus seeds) has been a staple of Indian wellness for centuries. It's naturally light, packs a satisfying crunch, and carries flavor without the heavy, sluggish feeling of traditional snacks.
+            Sourced from the wetlands of Bihar, makhana (popped lotus seeds) has been a staple of Indian wellness for centuries. It&apos;s naturally light, packs a satisfying crunch, and carries flavor without the heavy, sluggish feeling of traditional snacks.
           </p>
           <p className="text-foreground font-accent text-xl">
-            "If you can't say it, we don't use it."
+            &ldquo;If you can&apos;t say it, we don&apos;t use it.&rdquo;
           </p>
         </motion.div>
 
@@ -69,10 +69,10 @@ export default function WhatsInsidePage() {
           </div>
           <h2 className="text-3xl md:text-4xl font-display text-foreground mb-6">Roasted in Olive Oil</h2>
           <p className="text-muted text-lg leading-relaxed mb-6">
-            Refined oils are cheap, but they often leave a heavy aftertaste. We use olive oil for a cleaner roast that respects your body. It's an indulgence that actually feels good when the night ends.
+            Refined oils are cheap, but they often leave a heavy aftertaste. We use olive oil for a cleaner roast that respects your body. It&apos;s an indulgence that actually feels good when the night ends.
           </p>
           <p className="text-foreground font-accent text-xl">
-            "Better fats. Better crunch."
+            &ldquo;Better fats. Better crunch.&rdquo;
           </p>
         </motion.div>
       </section>
@@ -114,7 +114,7 @@ export default function WhatsInsidePage() {
       <section className="container mx-auto px-6 md:px-12 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display text-foreground mb-6">The Midnight Standard</h2>
-          <p className="text-lg text-muted italic font-accent">"A side-by-side look at how we reimagine your midnight pause."</p>
+          <p className="text-lg text-muted italic font-accent">&ldquo;A side-by-side look at how we reimagine your midnight pause.&rdquo;</p>
         </div>
         
         <div className="max-w-4xl mx-auto bg-surface rounded-3xl overflow-hidden border border-white/10 shadow-2xl">

@@ -15,7 +15,7 @@ export default function ContactPage() {
       <section className="container mx-auto px-6 max-w-4xl text-center mb-20 relative z-10">
         <h1 className="text-5xl md:text-7xl font-display text-foreground mb-8">Hello.</h1>
         <p className="text-xl md:text-2xl text-muted font-display italic leading-relaxed">
-          "We would love to hear from you. Whether it's a question, a craving, or a partnership — this is where we meet."
+          &ldquo;We would love to hear from you. Whether it&apos;s a question, a craving, or a partnership — this is where we meet.&rdquo;
         </p>
       </section>
 

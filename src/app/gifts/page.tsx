@@ -47,7 +47,7 @@ export default function GiftsPage() {
         <div className="relative z-20 text-center px-6">
           <h1 className="text-6xl md:text-8xl font-display text-foreground mb-6">Give them a Midnight.</h1>
           <p className="text-xl md:text-2xl text-muted font-display italic max-w-2xl mx-auto">
-            "Because some moments are too good to keep to yourself."
+            &ldquo;Because some moments are too good to keep to yourself.&rdquo;
           </p>
         </div>
       </section>
@@ -91,7 +91,7 @@ export default function GiftsPage() {
                 />
               </div>
               <h3 className="text-2xl font-display text-foreground mb-2">{bundle.name}</h3>
-              <p className="text-muted text-sm mb-8 flex-grow leading-relaxed italic">"{bundle.desc}"</p>
+              <p className="text-muted text-sm mb-8 flex-grow leading-relaxed italic">&ldquo;{bundle.desc}&rdquo;</p>
               <div className="w-full flex items-center justify-between mt-auto pt-6 border-t border-white/5">
                 <span className="text-foreground font-bold text-xl">{bundle.price}</span>
                 <button
@@ -112,7 +112,7 @@ export default function GiftsPage() {
         <div className="container mx-auto px-6 max-w-3xl relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display text-foreground mb-4">Corporate & Bulk</h2>
-            <p className="text-muted italic">"Your brand, our crunch. A partnership made in the quiet hours."</p>
+            <p className="text-muted italic">&ldquo;Your brand, our crunch. A partnership made in the quiet hours.&rdquo;</p>
           </div>
 
           <form className="space-y-6">

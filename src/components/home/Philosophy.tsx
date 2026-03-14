@@ -23,7 +23,7 @@ const beliefs = [
 
 export function Philosophy() {
   return (
-    <section className="py-40 bg-background border-y border-foreground/5 relative relative overflow-hidden"><div className="brand-pattern-bg opacity-[0.02]" />
+    <section className="py-40 bg-background border-y border-foreground/5 relative overflow-hidden"><div className="brand-pattern-bg opacity-[0.02]" />
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         <div className="space-y-32">
           {beliefs.map((belief) => (

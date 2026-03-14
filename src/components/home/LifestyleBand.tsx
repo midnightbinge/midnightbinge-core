@@ -19,7 +19,7 @@ export function LifestyleBand() {
   const doubleImages = [...images, ...images];
 
   return (
-    <section className="py-24 overflow-hidden bg-background relative flex relative overflow-hidden">
+    <section className="py-24 bg-background relative flex overflow-hidden">
       <div className="brand-pattern-bg opacity-[0.02]" />
       
       <motion.div 

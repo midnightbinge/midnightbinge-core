@@ -43,7 +43,7 @@ export default function StoryPage() {
             <span className="text-accent">Midnight began with a feeling.</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted font-accent mt-8 italic">
-            "When the world is quiet, when the day has ended, when our guards are down."
+            &ldquo;When the world is quiet, when the day has ended, when our guards are down.&rdquo;
           </p>
         </motion.div>
       </section>
@@ -56,7 +56,7 @@ export default function StoryPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-display text-foreground mb-6">Two Brothers. One Problem.</h2>
             <p className="text-xl text-muted font-body max-w-2xl mx-auto">
-              Unable to find a snacking brand that neither made them feel guilty, nor scared them. They could've stayed consumers, but they chose to become creators.
+              Unable to find a snacking brand that neither made them feel guilty, nor scared them. They could&apos;ve stayed consumers, but they chose to become creators.
             </p>
           </div>
 
@@ -140,7 +140,7 @@ export default function StoryPage() {
             Late at night, when the world feels honest, something became clear.
           </h2>
           <p className="text-xl md:text-2xl text-muted font-body leading-relaxed">
-            Snacking had stopped feeling human. Every option came with a lecture. <span className="text-accent font-accent italic text-3xl md:text-4xl block mt-6">"That is when Midnight was born."</span>
+            Snacking had stopped feeling human. Every option came with a lecture. <span className="text-accent font-accent italic text-3xl md:text-4xl block mt-6">&ldquo;That is when Midnight was born.&rdquo;</span>
           </p>
         </motion.div>
       </section>
@@ -170,7 +170,7 @@ export default function StoryPage() {
               </div>
               <h4 className="text-sm font-bold tracking-widest uppercase text-accent mb-4">The Challenge</h4>
               <p className="text-2xl font-display text-foreground leading-relaxed relative z-10">
-                "To reimagine snacking where health, taste, and emotion could exist together without losing authenticity."
+                &ldquo;To reimagine snacking where health, taste, and emotion could exist together without losing authenticity.&rdquo;
               </p>
             </div>
           </motion.div>
@@ -196,7 +196,7 @@ export default function StoryPage() {
             The result is a snacking experience that feels complete: nourishing to the body, comforting to the mind, and deeply satisfying at heart.
           </p>
           <h3 className="text-6xl md:text-8xl font-display font-bold mt-12 tracking-tighter">
-            Better Feels Good.
+            Better that feels good.
           </h3>
         </motion.div>
       </section>

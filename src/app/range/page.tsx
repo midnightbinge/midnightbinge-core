@@ -31,6 +31,7 @@ function RangeContent() {
   // Sync state if URL changes after mount
   useEffect(() => {
     if (categoryParam && paramToCategory[categoryParam]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- URL param sync
       setActiveTab(paramToCategory[categoryParam]);
     } else if (!categoryParam) {
       setActiveTab("All");
@@ -72,7 +73,7 @@ function RangeContent() {
             onClick={() => { setActiveTab(cat); }}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               activeTab === cat 
-                ? "bg-accent text-white shadow-[0_0_20px_rgba(107,146,231,0.4)]" 
+                ? "bg-accent text-white shadow-[0_0_20px_rgba(107,92,231,0.4)]" 
                 : "bg-surface text-muted hover:text-foreground border border-muted/10"
             }`}
           >
@@ -124,7 +125,7 @@ function RangeContent() {
                   <Link href={`/range/${product.slug}`} className="hover:text-accent transition-colors">
                     <h3 className="text-3xl font-display text-foreground mb-2">{product.name}</h3>
                   </Link>
-                  <p className="text-muted italic text-sm mb-6 flex-grow">"{product.tagline}"</p>
+                  <p className="text-muted italic text-sm mb-6 flex-grow">&ldquo;{product.tagline}&rdquo;</p>
                   
                   <div className="flex items-center justify-between mt-auto pt-6 border-t border-muted/10">
                     <div>
@@ -142,7 +143,7 @@ function RangeContent() {
                       onClick={(e) => { e.preventDefault(); }}
                       className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-medium transition-colors shadow-md active:scale-95"
                     >
-                      I'm interested
+                      I&apos;m interested
                     </button>
                   </div>
                 </div>
@@ -156,7 +157,7 @@ function RangeContent() {
       <section className="py-32 bg-secondary/30 relative overflow-hidden border-t border-foreground/5">
         <div className="brand-pattern-bg opacity-[0.02]" />
         <div className="container mx-auto px-6 text-center relative z-10">
-          <p className="font-accent text-3xl text-foreground mb-6">"Better that feels good."</p>
+          <p className="font-accent text-3xl text-foreground mb-6">&ldquo;Better that feels good.&rdquo;</p>
           <p className="text-muted max-w-md mx-auto">Until next time, snack better. Feel good.</p>
         </div>
       </section>
