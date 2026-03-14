@@ -27,7 +27,7 @@ export function Footer() {
             />
           </Link>
           <div className="space-y-2 max-w-sm">
-            <p className="font-accent text-xl text-warm">Better Feels Good.</p>
+            <p className="font-accent text-xl text-warm">Better that feels good.</p>
             <p className="text-muted leading-relaxed">Premium makhana snacks. Made for real moments.</p>
           </div>
         </div>
@@ -38,7 +38,7 @@ export function Footer() {
           <Link href="/" className="hover:text-accent transition-colors w-fit text-sm">Home</Link>
           <Link href="/range" className="hover:text-accent transition-colors w-fit text-sm">The Range</Link>
           <Link href="/story" className="hover:text-accent transition-colors w-fit text-sm">Midnight Story</Link>
-          <Link href="/whats-inside" className="hover:text-accent transition-colors w-fit text-sm">What's Inside</Link>
+          <Link href="/whats-inside" className="hover:text-accent transition-colors w-fit text-sm">What&apos;s Inside</Link>
           <Link href="/gifts" className="hover:text-accent transition-colors w-fit text-sm">Gifts</Link>
           <Link href="/contact" className="hover:text-accent transition-colors w-fit text-sm">Contact</Link>
           
@@ -51,7 +51,7 @@ export function Footer() {
         {/* Right Column */}
         <div className="flex flex-col gap-6">
           <h4 className="text-sm uppercase tracking-widest text-muted font-bold mb-2">Join the Night</h4>
-          <p className="text-muted max-w-xs text-sm">Drop your email. We'll send something worth opening at midnight.</p>
+          <p className="text-muted max-w-xs text-sm">Drop your email. We&apos;ll send something worth opening at midnight.</p>
           <form className="flex w-full max-w-sm border-b border-muted/30 focus-within:border-accent transition-colors pb-2">
             <input 
               type="email" 

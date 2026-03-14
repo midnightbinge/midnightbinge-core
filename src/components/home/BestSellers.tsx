@@ -40,7 +40,7 @@ export function BestSellers() {
             Explore the <span className="text-accent">Range</span>
           </h2>
           <p className="text-muted text-lg max-w-2xl mx-auto italic font-accent">
-            "From the bold heat of Peri Peri to the simple honesty of Raw Makhana. Find your category."
+            &ldquo;From the bold heat of Peri Peri to the simple honesty of Raw Makhana. Find your category.&rdquo;
           </p>
         </div>
         

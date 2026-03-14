@@ -18,7 +18,7 @@ export default function NotFound() {
         <h1 className="text-8xl md:text-9xl font-display text-accent mb-4">404</h1>
         <h2 className="text-3xl md:text-4xl font-display text-foreground mb-8">Lost in the Night?</h2>
         <p className="text-muted text-lg max-w-md mx-auto mb-12 italic">
-          "The crunch you're looking for isn't here. But there's always something better waiting."
+          &ldquo;The crunch you&apos;re looking for isn&apos;t here. But there&apos;s always something better waiting.&rdquo;
         </p>
         
         <Link 

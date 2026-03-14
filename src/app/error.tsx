@@ -29,7 +29,7 @@ export default function Error({
         <h1 className="text-6xl md:text-8xl font-display text-accent mb-4">Oops.</h1>
         <h2 className="text-2xl md:text-3xl font-display text-foreground mb-8">Something went quiet.</h2>
         <p className="text-muted text-lg max-w-md mx-auto mb-12 italic">
-          "Even the best crunches have a pause. We're working on getting the night back on track."
+          &ldquo;Even the best crunches have a pause. We&apos;re working on getting the night back on track.&rdquo;
         </p>
         
         <button 

@@ -18,7 +18,7 @@ export default function PrivacyPage() {
 
         <div className="prose prose-invert max-w-none space-y-8 text-muted leading-relaxed">
           <p className="text-xl text-foreground italic font-display">
-            "Your trust is as important to us as our crunch. We handle your data with the same care we use for our makhana."
+            &ldquo;Your trust is as important to us as our crunch. We handle your data with the same care we use for our makhana.&rdquo;
           </p>
 
           <section>
@@ -31,14 +31,14 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-display text-foreground mb-4">2. How We Use It</h2>
             <p>
-              We use this information solely to respond to your inquiries, improve our brand experience, and, if you've opted in, keep you posted on Midnight news. We never sell your data to third parties.
+              We use this information solely to respond to your inquiries, improve our brand experience, and, if you&apos;ve opted in, keep you posted on Midnight news. We never sell your data to third parties.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-display text-foreground mb-4">3. Cookies</h2>
             <p>
-              We use minimal cookies to understand how you interact with our website. This helps us make the digital 'Midnight' as comfortable as possible.
+              We use minimal cookies to understand how you interact with our website. This helps us make the digital &apos;Midnight&apos; as comfortable as possible.
             </p>
           </section>
 

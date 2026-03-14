@@ -51,7 +51,7 @@ export function MoodSelector() {
       
       <div className="container mx-auto px-6 mb-16 text-center relative z-10">
         <h2 className="text-4xl md:text-7xl font-display font-medium text-foreground mb-4">
-          What's your <span className="text-accent">Midnight?</span>
+          What&apos;s your <span className="text-accent">Midnight?</span>
         </h2>
         <p className="text-muted text-lg md:text-xl italic font-display">Find the crunch for your moment.</p>
       </div>
@@ -132,7 +132,7 @@ export function MoodSelector() {
                       className="absolute inset-x-0 bottom-[-1rem] lg:bottom-[-2rem] flex flex-col items-center px-4"
                     >
                       <p className="text-brand-cream text-lg lg:text-2xl font-accent mb-1 keep-white text-white">{mood.recommendation.name}</p>
-                      <p className="text-warm italic text-[10px] lg:text-sm mb-4 lg:mb-6 text-white/80">"{mood.recommendation.desc}"</p>
+                      <p className="text-warm italic text-[10px] lg:text-sm mb-4 lg:mb-6 text-white/80">&ldquo;{mood.recommendation.desc}&rdquo;</p>
                       <Link 
                         href={`/range/${mood.recommendation.slug}`}
                         className="px-6 py-2 bg-white text-black rounded-full text-[10px] md:text-xs uppercase tracking-widest font-bold hover:bg-accent hover:text-white transition-colors whitespace-nowrap shadow-xl"

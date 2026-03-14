@@ -64,7 +64,7 @@ export default function ProductPage() {
             className="w-full md:w-1/2 text-center md:text-left"
           >
             <h1 className="text-5xl md:text-7xl font-display text-foreground mb-6 leading-tight">{product.name}</h1>
-            <p className="text-2xl text-warm font-display italic mb-6">"{product.heartCopy}"</p>
+            <p className="text-2xl text-warm font-display italic mb-6">&ldquo;{product.heartCopy}&rdquo;</p>
             <p className="text-lg text-muted font-body leading-relaxed max-w-lg mx-auto md:mx-0">
               {product.description}
             </p>
@@ -79,7 +79,7 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             
             <div>
-              <h3 className="text-sm font-bold tracking-widest uppercase text-muted mb-6">What's Inside</h3>
+              <h3 className="text-sm font-bold tracking-widest uppercase text-muted mb-6">What&apos;s Inside</h3>
               <p className="text-foreground text-lg leading-relaxed mb-8 bg-background/50 p-6 rounded-xl border border-muted/10">
                 {product.ingredients}
               </p>
@@ -87,7 +87,7 @@ export default function ProductPage() {
                 <Shield className="text-accent flex-shrink-0 mt-1" size={24} />
                 <div>
                   <h4 className="text-foreground font-medium mb-1">Honest Transparency</h4>
-                  <p className="text-sm text-muted">We don't hide behind chemical names. Everything you taste is right there on the label.</p>
+                  <p className="text-sm text-muted">We don&apos;t hide behind chemical names. Everything you taste is right there on the label.</p>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function ProductPage() {
               <Droplet className="text-amber-600 mb-6" size={32} />
               <h3 className="text-2xl font-display mb-4">Roasted in Olive Oil.</h3>
               <p className="opacity-80 leading-relaxed">
-                Most brands use cheap, refined oils that leave you feeling sluggish. We use olive oil for a cleaner, lighter roast that respects your body. It's an indulgence that actually feels good.
+                Most brands use cheap, refined oils that leave you feeling sluggish. We use olive oil for a cleaner, lighter roast that respects your body. It&apos;s an indulgence that actually feels good.
               </p>
             </div>
 
@@ -121,7 +121,7 @@ export default function ProductPage() {
                       aria-label={`Select size ${s.size}`}
                       className={`px-8 py-4 rounded-xl border transition-all ${
                         selectedSize === s.size 
-                          ? "border-accent bg-accent/10 text-foreground shadow-[0_0_15px_rgba(107,146,231,0.2)]" 
+                          ? "border-accent bg-accent/10 text-foreground shadow-[0_0_15px_rgba(107,92,231,0.2)]" 
                           : "border-muted/10 text-muted hover:border-muted/30"
                       }`}
                     >
@@ -137,13 +137,13 @@ export default function ProductPage() {
                     aria-label="Express interest in this product"
                     className="w-full md:w-auto px-12 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium text-lg transition-transform transform hover:scale-105 shadow-lg shadow-accent/20 active:scale-95 mb-12"
                   >
-                    I'm interested
+                    I&apos;m interested
                   </button>
                 </div>
               </>
             ) : (
               <div className="py-8 mb-12">
-                <p className="text-accent font-display text-2xl mb-4 italic">"Coming soon to your quiet hours."</p>
+                <p className="text-accent font-display text-2xl mb-4 italic">&ldquo;Coming soon to your quiet hours.&rdquo;</p>
                 <button className="px-10 py-4 border border-accent/30 text-muted rounded-full hover:bg-accent/5 transition-colors">Keep me posted</button>
               </div>
             )}

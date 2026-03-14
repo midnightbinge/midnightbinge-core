@@ -18,7 +18,7 @@ export default function TermsPage() {
 
         <div className="prose prose-invert max-w-none space-y-8 text-muted leading-relaxed">
           <p className="text-xl text-foreground italic font-display">
-            "By using this site, you're joining the Midnight community. We ask that you respect our space as much as we respect your time."
+            &ldquo;By using this site, you&apos;re joining the Midnight community. We ask that you respect our space as much as we respect your time.&rdquo;
           </p>
 
           <section>
@@ -31,7 +31,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-display text-foreground mb-4">2. Intellectual Property</h2>
             <p>
-              All content on this site, including the 'Midnight' logo, designs, and copy, are the property of Midnight Binge and are protected by copyright laws.
+              All content on this site, including the &apos;Midnight&apos; logo, designs, and copy, are the property of Midnight Binge and are protected by copyright laws.
             </p>
           </section>
 

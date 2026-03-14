@@ -29,7 +29,7 @@ export function Testimonials() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-display text-foreground mb-4">Midnight Voices</h2>
-          <p className="text-muted italic font-accent text-xl">"Real stories from the quiet hours."</p>
+          <p className="text-muted italic font-accent text-xl">&ldquo;Real stories from the quiet hours.&rdquo;</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-8">
@@ -45,7 +45,7 @@ export function Testimonials() {
               <Quote className="text-accent/20 absolute top-8 left-8 group-hover:text-accent/40 transition-colors" size={40} />
               <div className="relative z-10">
                 <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8 italic font-display">
-                  "{t.text}"
+                  &ldquo;{t.text}&rdquo;
                 </p>
                 <div className="border-t border-foreground/5 pt-6">
                   <p className="font-bold text-foreground">{t.author}</p>

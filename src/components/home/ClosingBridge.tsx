@@ -18,7 +18,7 @@ export function ClosingBridge() {
           Everyone has a <span className="text-accent">Midnight</span>.
         </h2>
         <p className="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-16 italic font-accent">
-          "Until next time, snack better. Feel good."
+          &ldquo;Until next time, snack better. Feel good.&rdquo;
         </p>
         
         <Link 

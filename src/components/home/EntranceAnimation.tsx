@@ -21,6 +21,7 @@ export function EntranceAnimation() {
   useEffect(() => {
     // Check if user has already seen the animation this session
     if (typeof window !== "undefined" && sessionStorage.getItem("hasSeenEntrance")) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- sessionStorage check on mount
       setIsVisible(false);
       return;
     }
@@ -104,7 +105,7 @@ export function EntranceAnimation() {
                   className="text-center space-y-1"
                 >
                   <p className="text-2xl md:text-4xl font-display text-accent">
-                    It's Midnight<span className="text-foreground">.</span>
+                    It&apos;s Midnight<span className="text-foreground">.</span>
                   </p>
                   <p className="text-xs md:text-base font-accent text-warm tracking-[0.1em] opacity-90">
                     Better that feels good.
