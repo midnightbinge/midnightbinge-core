@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Gift, Package, Sparkles, Heart } from "lucide-react";
+import { Package, Sparkles, Heart } from "lucide-react";
 
 const occasions = [
   { id: "corporate", name: "Corporate Gifting", icon: Package },

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Droplets, Wheat, Flame, Box } from "lucide-react";
+import { Droplets, Wheat, Flame, Box } from "lucide-react";
 import Link from "next/link";
 
 export default function WhatsInsidePage() {

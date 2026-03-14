@@ -1,10 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/range/fiesty-korean-crispo',
+        destination: '/range/feisty-korean-crispo',
+        permanent: true,
+      },
+    ];
   },
   async headers() {
     return [
@@ -28,8 +36,12 @@ const nextConfig: NextConfig = {
             value: 'strict-origin-when-cross-origin',
           },
           {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' *.vercel-analytics.com;",
           },
         ],
       },

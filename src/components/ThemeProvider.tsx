@@ -12,21 +12,17 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Initialize state directly to avoid double-render if possible
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("theme") as Theme | null;
-      return saved || "light";
-    }
-    return "light";
-  });
-  
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme>("dark");
 
+  // Initialize theme from localStorage on mount
   useEffect(() => {
-    setMounted(true);
+    const saved = localStorage.getItem("theme") as Theme | null;
+    if (saved) {
+      setTheme(saved);
+    }
   }, []);
 
+  // Update document class when theme changes
   useEffect(() => {
     if (theme === "light") {
       document.documentElement.classList.add("day-mode");
@@ -38,15 +34,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 
-  // Still need mounted check to avoid hydration mismatch on dynamic classes
-  if (!mounted) {
-    return (
-      <ThemeContext.Provider value={{ theme: "light", toggleTheme: () => {} }}>
-        <div style={{ visibility: 'hidden' }}>{children}</div>
-      </ThemeContext.Provider>
-    );
-  }
-
+  // Avoid FOUC by not rendering anything until mounted
+  // or return children with a theme-ready state.
+  // The 'hidden' div was problematic, so we return 
+  // children directly now and manage the class via useEffect.
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

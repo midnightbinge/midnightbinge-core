@@ -10,7 +10,7 @@ const slides = [
     id: 1,
     type: "emotion",
     image: "/lifestyle/01.png",
-    tagline: "Better Feels Good.",
+    tagline: "Better that feels good.",
     subline: "Premium makhana, roasted in olive oil for your quietest hours."
   },
   {

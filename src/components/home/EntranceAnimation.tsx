@@ -107,7 +107,7 @@ export function EntranceAnimation() {
                     It's Midnight<span className="text-foreground">.</span>
                   </p>
                   <p className="text-xs md:text-base font-accent text-warm tracking-[0.1em] opacity-90">
-                    Better Feels Good.
+                    Better that feels good.
                   </p>
                 </motion.div>
               )}

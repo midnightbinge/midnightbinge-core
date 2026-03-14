@@ -156,7 +156,7 @@ function RangeContent() {
       <section className="py-32 bg-secondary/30 relative overflow-hidden border-t border-foreground/5">
         <div className="brand-pattern-bg opacity-[0.02]" />
         <div className="container mx-auto px-6 text-center relative z-10">
-          <p className="font-accent text-3xl text-foreground mb-6">"Better Feels Good."</p>
+          <p className="font-accent text-3xl text-foreground mb-6">"Better that feels good."</p>
           <p className="text-muted max-w-md mx-auto">Until next time, snack better. Feel good.</p>
         </div>
       </section>
