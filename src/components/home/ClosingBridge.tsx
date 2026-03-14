@@ -1,12 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useAudio } from "@/components/AudioProvider";
 import { motion } from "framer-motion";
 
 export function ClosingBridge() {
-  const { playCrunch } = useAudio();
-
   return (
     <section className="py-40 bg-background flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
       <div className="brand-pattern-bg opacity-[0.02]" />
@@ -26,7 +23,6 @@ export function ClosingBridge() {
         
         <Link 
           href="/range"
-          onClick={playCrunch}
           className="px-12 py-5 bg-accent text-white rounded-full font-medium text-lg transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-accent/20"
         >
           Explore the Range

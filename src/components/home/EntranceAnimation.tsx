@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 export function EntranceAnimation() {
   const [isVisible, setIsVisible] = useState(true);
   const [time, setTime] = useState("11:59");
   const [showTagline, setShowTagline] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     // Check if user has already seen the animation this session
@@ -48,7 +49,8 @@ export function EntranceAnimation() {
           {/* Skip Button */}
           <button 
             onClick={handleComplete}
-            className="absolute top-8 right-8 z-[110] text-xs uppercase tracking-widest text-muted hover:text-accent transition-colors"
+            className="absolute top-8 right-8 z-[110] text-xs uppercase tracking-widest text-muted hover:text-accent transition-colors p-4"
+            aria-label="Skip animation"
           >
             Skip
           </button>
@@ -56,7 +58,7 @@ export function EntranceAnimation() {
           {/* Subtle Brand Pattern Background */}
           <motion.div 
             className="brand-pattern-bg opacity-10"
-            initial={{ scale: 1.1 }}
+            initial={shouldReduceMotion ? { scale: 1 } : { scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 3, ease: "easeOut" }}
           />
@@ -64,11 +66,11 @@ export function EntranceAnimation() {
           {/* Atmospheric Floating Makhana - Single focus element */}
           <motion.div 
             className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.15, scale: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
           >
-            <div className="relative w-[400px] h-[400px]">
+            <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
               <Image 
                 src="/products/raw_makhana.png" 
                 alt="" 
@@ -81,10 +83,10 @@ export function EntranceAnimation() {
           {/* Digital Clock */}
           <motion.div
             key={time}
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-8xl md:text-[12rem] font-display font-medium tracking-tighter relative z-10"
+            className="text-7xl md:text-[12rem] font-display font-medium tracking-tighter relative z-10"
           >
             {time}
           </motion.div>
@@ -94,15 +96,15 @@ export function EntranceAnimation() {
             <AnimatePresence mode="wait">
               {showTagline && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="text-center space-y-1"
                 >
-                  <p className="text-3xl md:text-4xl font-display text-accent">
+                  <p className="text-2xl md:text-4xl font-display text-accent">
                     It's Midnight<span className="text-foreground">.</span>
                   </p>
-                  <p className="text-sm md:text-base font-accent text-warm tracking-[0.1em] opacity-90">
+                  <p className="text-xs md:text-base font-accent text-warm tracking-[0.1em] opacity-90">
                     Better Feels Good
                   </p>
                 </motion.div>

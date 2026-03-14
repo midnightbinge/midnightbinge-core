@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useAudio } from "@/components/AudioProvider";
 import { cn } from "@/lib/utils";
 
 const moods = [
@@ -44,7 +43,7 @@ const moods = [
 
 export function MoodSelector() {
   const [hoveredMood, setHoveredMood] = useState<string | null>(null);
-  const { playCrunch } = useAudio();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="py-24 bg-background overflow-hidden relative">
@@ -76,7 +75,7 @@ export function MoodSelector() {
               onBlur={() => setHoveredMood(null)}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setHoveredMood(isHovered ? null : mood.id); }}
               onClick={() => setHoveredMood(isHovered ? null : mood.id)}
-              whileHover={{ flexGrow: 1.2 }}
+              whileHover={shouldReduceMotion ? {} : { flexGrow: 1.2 }}
               transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
             >
               {/* Lifestyle Background Image */}
@@ -97,9 +96,9 @@ export function MoodSelector() {
               <AnimatePresence>
                 {isHovered && (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.5, y: 50, rotate: 15 }}
+                    initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.5, y: 50, rotate: 15 }}
                     animate={{ opacity: 1, scale: 1, y: 0, rotate: -5 }}
-                    exit={{ opacity: 0, scale: 0.5, y: 20 }}
+                    exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.5, y: 20 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     className="absolute z-20 w-32 md:w-48 h-32 md:h-48 pointer-events-none"
                   >
@@ -117,7 +116,7 @@ export function MoodSelector() {
                 <motion.h3 
                   className={cn(
                     "text-3xl md:text-4xl font-display keep-white text-white transition-all duration-500", 
-                    isHovered ? "translate-y-[-80px] md:translate-y-[-120px] scale-110" : "translate-y-0"
+                    isHovered ? (shouldReduceMotion ? "scale-110" : "translate-y-[-80px] md:translate-y-[-120px] scale-110") : "translate-y-0"
                   )}
                 >
                   {mood.title}
@@ -136,7 +135,6 @@ export function MoodSelector() {
                       <p className="text-warm italic text-xs md:text-sm mb-4 md:mb-6 text-white/80">"{mood.recommendation.desc}"</p>
                       <Link 
                         href={`/range/${mood.recommendation.slug}`}
-                        onClick={(e) => { e.stopPropagation(); playCrunch(); }}
                         className="px-6 py-2 bg-white text-black rounded-full text-[10px] md:text-xs uppercase tracking-widest font-bold hover:bg-accent hover:text-white transition-colors whitespace-nowrap shadow-xl"
                       >
                         Try This Flavor

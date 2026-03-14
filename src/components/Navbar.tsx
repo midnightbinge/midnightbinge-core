@@ -1,6 +1,5 @@
 "use client";
 
-import { useAudio } from "@/components/AudioProvider";
 import { useTheme } from "@/components/ThemeProvider";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -13,7 +12,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { playCrunch } = useAudio();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +57,6 @@ export function Navbar() {
                 key={link.name}
                 href={link.path}
                 className="group relative py-2 text-sm font-medium transition-colors whitespace-nowrap"
-                onClick={playCrunch}
               >
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 text-accent transform translate-y-1 group-hover:translate-y-0">
                   <Moon size={10} fill="currentColor" />
@@ -79,7 +76,6 @@ export function Navbar() {
             <Link
               href="/range"
               className="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
-              onClick={playCrunch}
             >
               Explore the Range
             </Link>
@@ -112,7 +108,6 @@ export function Navbar() {
               className="text-3xl font-display font-medium hover:text-accent transition-colors"
               onClick={() => {
                 setMobileOpen(false);
-                playCrunch();
               }}
             >
               {link.name}
@@ -124,7 +119,6 @@ export function Navbar() {
             className="mt-6 bg-accent hover:bg-accent-hover text-white px-8 py-4 text-xl rounded-full font-medium transition-colors"
             onClick={() => {
               setMobileOpen(false);
-              playCrunch();
             }}
           >
             Explore the Range

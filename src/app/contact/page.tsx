@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useAudio } from "@/components/AudioProvider";
 import { motion, AnimatePresence } from "framer-motion";
 
 const tabs = ["General", "Wholesale & Distribution", "Gifting", "Press & Collabs"];
 
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const { playCrunch } = useAudio();
 
   return (
     <div className="bg-background min-h-screen pt-32 selection:bg-accent selection:text-white relative overflow-hidden">
@@ -28,7 +26,7 @@ export default function ContactPage() {
           {tabs.map(tab => (
             <button
               key={tab}
-              onClick={() => { setActiveTab(tab); playCrunch(); }}
+              onClick={() => { setActiveTab(tab); }}
               className={`pb-4 px-4 text-sm md:text-base font-medium transition-colors relative ${
                 activeTab === tab ? "text-foreground" : "text-muted hover:text-foreground/80"
               }`}
@@ -53,17 +51,43 @@ export default function ContactPage() {
               className="space-y-6"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" placeholder="Your Name" required className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
-                <input type="email" placeholder="Email Address" required className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  aria-label="Your Name"
+                  required 
+                  className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" 
+                />
+                <input 
+                  type="email" 
+                  placeholder="Email Address" 
+                  aria-label="Email Address"
+                  required 
+                  className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" 
+                />
               </div>
 
               {activeTab !== "General" && (
-                <input type="text" placeholder={activeTab === "Press & Collabs" ? "Publication / Handle" : "Company Name"} className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
+                <input 
+                  type="text" 
+                  placeholder={activeTab === "Press & Collabs" ? "Publication / Handle" : "Company Name"} 
+                  aria-label={activeTab === "Press & Collabs" ? "Publication or Social Media Handle" : "Company Name"}
+                  className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" 
+                />
               )}
 
-              <textarea placeholder="How can we help?" rows={5} required className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all resize-none" />
+              <textarea 
+                placeholder="How can we help?" 
+                aria-label="How can we help?"
+                rows={5} 
+                required 
+                className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all resize-none" 
+              />
               
-              <button type="button" onClick={playCrunch} className="w-full bg-accent hover:bg-accent-hover text-white rounded-xl py-4 font-medium transition-colors shadow-lg hover:shadow-accent/20">
+              <button 
+                type="button" 
+                className="w-full bg-accent hover:bg-accent-hover text-white rounded-xl py-4 font-medium transition-colors shadow-lg hover:shadow-accent/20 active:scale-[0.99]"
+              >
                 Send Message
               </button>
             </motion.form>
@@ -78,8 +102,8 @@ export default function ContactPage() {
             <a href="tel:+919217020447" className="text-muted hover:text-accent transition-colors font-medium text-lg">+91 9217020447</a>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center hover:border-accent hover:text-accent transition-all">IG</a>
-            <a href="#" className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center hover:border-accent hover:text-accent transition-all">YT</a>
+            <a href="https://www.instagram.com/midnightbinge.in" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center hover:border-accent hover:text-accent transition-all">IG</a>
+            <a href="https://www.linkedin.com/company/midnight-solution/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center hover:border-accent hover:text-accent transition-all">LI</a>
           </div>
         </div>
 
