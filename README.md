@@ -41,13 +41,14 @@ The project implements a custom dual-theme system (Dark/Light) using CSS variabl
 
 ### Data Layer
 - **Centralized Store**: All product data, flavors, and ingredients are managed in `src/data/products.ts`.
+- **Quick Commerce**: Direct integration with Blinkit, Zepto, and Amazon for seamless purchase paths.
 - **Image Optimization**: All brand and product assets utilize the `next/image` component for performance.
 
 ### Production Readiness
-- **SEO**: Full Open Graph, Twitter metadata, `sitemap.ts`, and `robots.ts` configuration.
-- **Security**: Security headers (CSP, X-Frame-Options, etc.) configured in `next.config.ts`.
+- **SEO**: Full Open Graph, Twitter metadata, dynamic `sitemap.ts`, and `robots.ts` configuration.
+- **Security**: Essential security headers (CSP, X-Frame-Options, etc.) configured in `next.config.ts`.
 - **Error Handling**: Global error boundary (`error.tsx`) and brand-styled 404 page (`not-found.tsx`).
-- **Accessibility**: WCAG AA contrast compliance, `prefers-reduced-motion` support, and proper ARIA labeling.
+- **Accessibility**: WCAG AA contrast compliance, `prefers-reduced-motion` support, safe-area-insets, and proper ARIA labeling.
 
 ## 📦 Getting Started
 

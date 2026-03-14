@@ -205,15 +205,15 @@ export const products: Product[] = [
     image: "/products/tomato_mexicana_crispo.png",
     color: "from-red-800/40",
     related: [
-      { name: "Fiesty Korean Crispo", slug: "fiesty-korean-crispo", image: "/products/fiesty_korean_cripso.png" },
+      { name: "Feisty Korean Crispo", slug: "feisty-korean-crispo", image: "/products/feisty_korean_crispo.png" },
       { name: "Peri Peri Rush", slug: "peri-peri-rush", image: "/products/peri_peri_rush.png" }
     ],
     quickCommerce: DEFAULT_QC
   },
   {
     id: "korean",
-    name: "Fiesty Korean Crispo",
-    slug: "fiesty-korean-crispo",
+    name: "Feisty Korean Crispo",
+    slug: "feisty-korean-crispo",
     category: "Cripso",
     tagline: "A bold kick of Gochugaru and a touch of sweetness.",
     heartCopy: "Some cravings don't wait for permission.",
@@ -221,7 +221,7 @@ export const products: Product[] = [
     ingredients: "Corn, Popped Lotus Seeds, Olive Oil, Korean Spice Blend, Soy Sauce Powder, Ginger, Garlic, Salt.",
     sizes: [{ size: "25g", price: "₹30" }, { size: "50g", price: "₹60" }],
     priceRange: "₹30 - ₹60",
-    image: "/products/fiesty_korean_cripso.png",
+    image: "/products/feisty_korean_crispo.png",
     color: "from-red-950/40",
     related: [
       { name: "Tomato Mexicana Crispo", slug: "tomato-mexicana-crispo", image: "/products/tomato_mexicana_crispo.png" },
@@ -243,7 +243,7 @@ export const products: Product[] = [
     image: "/products/mystery_masala_crispo.png",
     color: "from-indigo-900/40",
     related: [
-      { name: "Fiesty Korean Crispo", slug: "fiesty-korean-crispo", image: "/products/fiesty_korean_cripso.png" },
+      { name: "Feisty Korean Crispo", slug: "feisty-korean-crispo", image: "/products/feisty_korean_crispo.png" },
       { name: "Ranch-O-Cheese Crispo", slug: "ranch-o-cheese-crispo", image: "/products/ranch_o_cheese_cripso.png" }
     ],
     quickCommerce: DEFAULT_QC

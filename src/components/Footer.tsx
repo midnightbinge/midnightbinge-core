@@ -83,7 +83,7 @@ export function Footer() {
       </div>
       
       {/* Bottom Bar */}
-      <div className="container mx-auto px-6 md:px-12 mt-24 pt-8 border-t border-muted/10 flex flex-col md:flex-row justify-between items-center text-xs text-muted gap-4 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 mt-24 pt-8 pb-[env(safe-area-inset-bottom)] border-t border-muted/10 flex flex-col md:flex-row justify-between items-center text-xs text-muted gap-4 relative z-10">
         <p>&copy; {new Date().getFullYear()} Midnight. All rights reserved.</p>
         <div className="flex gap-6">
           <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
