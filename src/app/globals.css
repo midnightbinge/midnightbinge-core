@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--color-surface);
+  --color-secondary: var(--color-secondary);
+  
+  /* Brand Palette - Explicit Mapping */
+  --color-accent: #6B5CE7; /* Brand Purple */
+  --color-accent-hover: #5849D6;
+  --color-warm: #ffe4d9; /* Coral Candy */
+  --color-mauve: #ffd7f9;
+  --color-clinker: #381c07;
+  --color-tiber: #002e3a;
+  --color-nobel-teal: #045866;
+  
+  --color-muted: var(--color-muted);
+  --color-brand-cream: var(--color-brand-cream);
+  --color-input: var(--color-input);
+  --color-input-border: var(--color-input-border);
+}
+
+@font-face {
+  font-family: 'Elsie';
+  src: url('/fonts/Elsie-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Borel';
+  src: url('/fonts/Borel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/PoppinsRegular-B2Bw.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/PoppinsMedium-1JPv.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/PoppinsSemibold-8l8n.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/PoppinsBold-GdJA.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Mysterious Depths - Dark Identity (Default) */
+  --background: #060b28;
+  --foreground: #F4F1EB;
+  --color-surface: #0a113a;
+  --color-secondary: #002e3a; /* Tiber */
+  --color-accent: #6B5CE7;
+  --color-accent-hover: #5849D6;
+  --color-warm: #ffe4d9; /* Coral Candy */
+  --color-muted: #A0A2C0;
+  --color-brand-cream: #FAF5E9;
+  --color-input: rgba(0, 0, 0, 0.3);
+  --color-input-border: rgba(255, 255, 255, 0.1);
+  
+  --font-display: 'Elsie', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Borel', cursive;
+}
+
+/* Day Mode (Pale Lavender) */
+.day-mode {
+  --background: #d6d2ff;
+  --foreground: #060b28;
+  --color-surface: #e4e1ff;
+  --color-secondary: #c9c4ff;
+  --color-accent: #6B5CE7; 
+  --color-accent-hover: #5849D6;
+  --color-warm: #381c07; /* Clinker */
+  --color-muted: #6A6D88;
+  --color-brand-cream: #060b28;
+  --color-input: rgba(255, 255, 255, 0.5);
+  --color-input-border: rgba(107, 92, 231, 0.2);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand-pattern-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/Brand Pattern Without bg 01.png');
+  background-repeat: repeat;
+  background-size: 300px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.day-mode .brand-pattern-bg {
+  opacity: 0.07;
+  filter: brightness(0) saturate(100%) invert(8%) sepia(34%) mid(38%) hue-rotate(224deg) brightness(92%) contrast(101%);
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  color: var(--color-brand-cream);
+  position: relative;
+  z-index: 1;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.day-mode h1:not(.keep-white), 
+.day-mode h2:not(.keep-white), 
+.day-mode h3:not(.keep-white), 
+.day-mode h4:not(.keep-white), 
+.day-mode h5:not(.keep-white), 
+.day-mode h6:not(.keep-white), 
+.day-mode .font-display:not(.keep-white) {
+  color: #060b28;
+}
+
+.keep-white {
+  color: white !important;
+}
+
+/* Animations */
+.hero-parallax {
+  will-change: transform;
+}
+
+/* Remove default link blue */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Form Styles */
+input, textarea, select {
+  background-color: var(--color-input) !important;
+  border-color: var(--color-input-border) !important;
+  color: var(--foreground) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--foreground);
+  opacity: 0.5;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Accessibility: Skip to Content */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+}
