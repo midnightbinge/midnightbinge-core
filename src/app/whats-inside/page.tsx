@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle, Droplets, Wheat, Flame, Box } from "lucide-react";
+import Link from "next/link";
 
 export default function WhatsInsidePage() {
   const fadeUp = {
@@ -30,7 +31,7 @@ export default function WhatsInsidePage() {
           variants={fadeUp}
           className="text-xl md:text-2xl text-muted font-display italic max-w-2xl mx-auto"
         >
-          "Because knowing what you're reaching for shouldn't feel like a lecture. It should feel like a choice."
+          "Because knowing what you're reaching for shouldn't feel like a lecture. <span className="text-accent font-accent not-italic">It should feel like a choice.</span>"
         </motion.p>
       </section>
 
@@ -41,17 +42,17 @@ export default function WhatsInsidePage() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="bg-surface p-10 md:p-16 rounded-3xl border border-white/5 relative overflow-hidden"
+          className="bg-surface p-10 md:p-16 rounded-3xl border border-white/5 relative overflow-hidden group hover:border-accent/20 transition-colors"
         >
-          <div className="absolute top-0 right-0 p-8 opacity-10">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
             <Wheat size={120} />
           </div>
           <h2 className="text-3xl md:text-4xl font-display text-foreground mb-6">Honest Ingredients</h2>
           <p className="text-muted text-lg leading-relaxed mb-6">
             Sourced from the wetlands of Bihar, makhana (popped lotus seeds) has been a staple of Indian wellness for centuries. It's naturally light, packs a satisfying crunch, and carries flavor without the heavy, sluggish feeling of traditional snacks.
           </p>
-          <p className="text-muted text-lg leading-relaxed">
-            We don't hide behind chemical names. If you can't say it, we don't use it.
+          <p className="text-foreground font-accent text-xl">
+            "If you can't say it, we don't use it."
           </p>
         </motion.div>
 
@@ -61,17 +62,17 @@ export default function WhatsInsidePage() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           variants={fadeUp}
-          className="bg-secondary p-10 md:p-16 rounded-3xl border border-white/5 relative overflow-hidden"
+          className="bg-secondary p-10 md:p-16 rounded-3xl border border-white/5 relative overflow-hidden group hover:border-accent/20 transition-colors"
         >
-          <div className="absolute top-0 right-0 p-8 opacity-10">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
             <Droplets size={120} />
           </div>
           <h2 className="text-3xl md:text-4xl font-display text-foreground mb-6">Roasted in Olive Oil</h2>
           <p className="text-muted text-lg leading-relaxed mb-6">
-            Refined oils are cheap, but they leave a morning regret. We use olive oil for a cleaner roast that respects your body. It's an indulgence that actually feels good when the night ends.
+            Refined oils are cheap, but they often leave a heavy aftertaste. We use olive oil for a cleaner roast that respects your body. It's an indulgence that actually feels good when the night ends.
           </p>
-          <p className="text-muted text-lg leading-relaxed">
-            Better fats. Better crunch. Better feels.
+          <p className="text-foreground font-accent text-xl">
+            "Better fats. Better crunch."
           </p>
         </motion.div>
       </section>
@@ -102,7 +103,7 @@ export default function WhatsInsidePage() {
                   {i < 3 && <div className="hidden md:block absolute top-1/2 left-[120%] w-full h-px bg-white/10" />}
                 </div>
                 <h3 className="text-2xl font-display text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted max-w-[200px]">{step.desc}</p>
+                <p className="text-muted max-w-[200px] text-sm md:text-base">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -113,40 +114,38 @@ export default function WhatsInsidePage() {
       <section className="container mx-auto px-6 md:px-12 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display text-foreground mb-6">The Midnight Standard</h2>
-          <p className="text-lg text-muted">A side-by-side look at how we reimagine your midnight pause.</p>
+          <p className="text-lg text-muted italic font-accent">"A side-by-side look at how we reimagine your midnight pause."</p>
         </div>
         
         <div className="max-w-4xl mx-auto bg-surface rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-          <div className="grid grid-cols-3 bg-background/50 p-8 border-b border-white/10 text-sm font-bold tracking-widest uppercase text-muted">
-            <div>The Others</div>
+          <div className="grid grid-cols-3 bg-background/50 p-6 md:p-8 border-b border-white/10 text-[10px] md:text-sm font-bold tracking-widest uppercase text-muted">
+            <div>The Standard</div>
             <div className="text-center">Midnight</div>
             <div className="text-right">Focus</div>
           </div>
           
           {[
-            { label: "Oil", us: "Olive Oil", them: "Palm Oil" },
-            { label: "Cooking", us: "Roasted", them: "Deep Fried" },
-            { label: "Flavor", us: "Real Spices", them: "Chemical Dust" },
+            { label: "Oil", us: "Olive Oil", them: "Refined Oils" },
+            { label: "Cooking", us: "Roasted", them: "Fried" },
+            { label: "Flavor", us: "Real Spices", them: "Artificial Seasoning" },
             { label: "Aftertaste", us: "Clean", them: "Heavy" }
           ].map((row, i) => (
-            <div key={i} className="grid grid-cols-3 p-8 border-b border-white/5 last:border-0 items-center">
-              <div className="text-muted font-medium">{row.them}</div>
-              <div className="text-center text-accent font-bold text-lg">{row.us}</div>
-              <div className="text-right text-foreground font-display">{row.label}</div>
+            <div key={i} className="grid grid-cols-3 p-6 md:p-8 border-b border-white/5 last:border-0 items-center">
+              <div className="text-muted font-medium text-sm md:text-base">{row.them}</div>
+              <div className="text-center text-accent font-bold text-base md:text-lg">{row.us}</div>
+              <div className="text-right text-foreground font-display text-sm md:text-base">{row.label}</div>
             </div>
           ))}
         </div>
 
         <div className="mt-20 text-center">
           <p className="font-accent text-3xl text-foreground mb-8">Ready for a better crunch?</p>
-          <motion.a 
+          <Link 
             href="/range"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block px-12 py-5 bg-accent text-white rounded-full font-medium text-lg shadow-lg shadow-accent/20"
+            className="inline-block px-12 py-5 bg-accent text-white rounded-full font-medium text-lg shadow-lg shadow-accent/20 hover:bg-accent-hover transition-all transform hover:scale-105 active:scale-95"
           >
             Explore the range
-          </motion.a>
+          </Link>
         </div>
       </section>
 

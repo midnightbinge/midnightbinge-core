@@ -126,8 +126,8 @@ function RangeContent() {
                     </div>
                     
                     <button 
-                      onClick={(e) => { e.preventDefault(); playCrunch(); alert(`Interest captured for ${product.name}`); }}
-                      className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-medium transition-colors shadow-md"
+                      onClick={(e) => { e.preventDefault(); playCrunch(); }}
+                      className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-medium transition-colors shadow-md active:scale-95"
                     >
                       I'm interested
                     </button>

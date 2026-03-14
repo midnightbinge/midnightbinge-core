@@ -3,13 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useAudio } from "@/components/AudioProvider";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/lib/utils";
 
 const moods = [
   {
@@ -67,50 +63,61 @@ export function MoodSelector() {
           return (
             <motion.div
               key={mood.id}
+              tabIndex={0}
+              role="button"
+              aria-expanded={isHovered}
               className={cn(
-                "relative flex flex-col items-center justify-center overflow-hidden cursor-pointer min-h-[60vh] md:min-h-0 border-r border-white/5 last:border-r-0",
+                "relative flex flex-col items-center justify-center overflow-hidden cursor-pointer min-h-[40vh] md:min-h-0 border-b md:border-b-0 md:border-r border-white/5 last:border-0",
                 mood.color
               )}
               onMouseEnter={() => setHoveredMood(mood.id)}
               onMouseLeave={() => setHoveredMood(null)}
-              onClick={() => {
-                if (window.innerWidth < 1024) {
-                   setHoveredMood(isHovered ? null : mood.id);
-                }
-              }}
-              whileHover={{ flexGrow: 1.5 }}
+              onFocus={() => setHoveredMood(mood.id)}
+              onBlur={() => setHoveredMood(null)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setHoveredMood(isHovered ? null : mood.id); }}
+              onClick={() => setHoveredMood(isHovered ? null : mood.id)}
+              whileHover={{ flexGrow: 1.2 }}
               transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
             >
               {/* Lifestyle Background Image */}
-              <div 
-                className={cn(
-                  "absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-out",
-                  isHovered ? "scale-110 opacity-30 grayscale-[0.5]" : "scale-100 opacity-50 grayscale"
-                )}
-                style={{ backgroundImage: `url('${mood.image}')` }}
-              />
+              <div className="absolute inset-0">
+                <Image 
+                  src={mood.image} 
+                  alt={mood.title}
+                  fill
+                  className={cn(
+                    "object-cover transition-all duration-1000 ease-out",
+                    isHovered ? "scale-110 opacity-30 grayscale-[0.5]" : "scale-100 opacity-50 grayscale"
+                  )}
+                />
+              </div>
               <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
 
               {/* Reveal Product Shot on Hover */}
               <AnimatePresence>
                 {isHovered && (
-                  <motion.img
-                    src={mood.productImage}
-                    alt="Recommended Product"
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.5, y: 50, rotate: 15 }}
                     animate={{ opacity: 1, scale: 1, y: 0, rotate: -5 }}
                     exit={{ opacity: 0, scale: 0.5, y: 20 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                    className="absolute z-20 w-48 h-auto object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.2)] pointer-events-none"
-                  />
+                    className="absolute z-20 w-32 md:w-48 h-32 md:h-48 pointer-events-none"
+                  >
+                    <Image 
+                      src={mood.productImage} 
+                      alt="Recommended Product" 
+                      fill
+                      className="object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+                    />
+                  </motion.div>
                 )}
               </AnimatePresence>
 
-              <div className="relative z-30 text-center p-8 mt-auto md:mt-0">
+              <div className="relative z-30 text-center p-8">
                 <motion.h3 
                   className={cn(
                     "text-3xl md:text-4xl font-display keep-white text-white transition-all duration-500", 
-                    isHovered ? "translate-y-[-120px] scale-110" : "translate-y-0"
+                    isHovered ? "translate-y-[-80px] md:translate-y-[-120px] scale-110" : "translate-y-0"
                   )}
                 >
                   {mood.title}
@@ -123,14 +130,14 @@ export function MoodSelector() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.4, delay: 0.2 }}
-                      className="absolute inset-x-0 bottom-[-2rem] flex flex-col items-center"
+                      className="absolute inset-x-0 bottom-[-1rem] md:bottom-[-2rem] flex flex-col items-center px-4"
                     >
-                      <p className="text-brand-cream text-2xl font-display mb-1 keep-white text-white">{mood.recommendation.name}</p>
-                      <p className="text-warm italic text-sm mb-6 text-white/80">"{mood.recommendation.desc}"</p>
+                      <p className="text-brand-cream text-xl md:text-2xl font-accent mb-1 keep-white text-white">{mood.recommendation.name}</p>
+                      <p className="text-warm italic text-xs md:text-sm mb-4 md:mb-6 text-white/80">"{mood.recommendation.desc}"</p>
                       <Link 
                         href={`/range/${mood.recommendation.slug}`}
                         onClick={(e) => { e.stopPropagation(); playCrunch(); }}
-                        className="px-6 py-2 bg-white text-black rounded-full text-xs uppercase tracking-widest font-bold hover:bg-accent hover:text-white transition-colors"
+                        className="px-6 py-2 bg-white text-black rounded-full text-[10px] md:text-xs uppercase tracking-widest font-bold hover:bg-accent hover:text-white transition-colors whitespace-nowrap shadow-xl"
                       >
                         Try This Flavor
                       </Link>

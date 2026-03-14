@@ -2,23 +2,36 @@
 
 import Link from "next/link";
 import { useAudio } from "@/components/AudioProvider";
+import { motion } from "framer-motion";
 
 export function ClosingBridge() {
   const { playCrunch } = useAudio();
 
   return (
-    <section className="py-40 bg-background flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"><div className="brand-pattern-bg opacity-[0.02]" />
-      <h2 className="text-4xl md:text-6xl lg:text-7xl font-display text-foreground max-w-4xl mx-auto leading-tight mb-12">
-        Everyone has a Midnight. <br/>
-        <span className="text-muted">Now it has a snack.</span>
-      </h2>
-      <Link 
-        href="/range"
-        onClick={playCrunch}
-        className="px-10 py-5 bg-white text-[#060b28] hover:bg-brand-cream rounded-full font-medium transition-transform transform hover:scale-105 active:scale-95 duration-200"
+    <section className="py-40 bg-background flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
+      <div className="brand-pattern-bg opacity-[0.02]" />
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="relative z-10"
       >
-        Explore the Range
-      </Link>
+        <h2 className="text-5xl md:text-7xl font-display text-foreground mb-8">
+          Everyone has a <span className="text-accent">Midnight</span>.
+        </h2>
+        <p className="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-16 italic font-accent">
+          "Until next time, snack better. Feel good."
+        </p>
+        
+        <Link 
+          href="/range"
+          onClick={playCrunch}
+          className="px-12 py-5 bg-accent text-white rounded-full font-medium text-lg transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-accent/20"
+        >
+          Explore the Range
+        </Link>
+      </motion.div>
     </section>
   );
 }
