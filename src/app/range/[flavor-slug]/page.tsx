@@ -6,8 +6,8 @@ import Image from "next/image";
 import { useParams, notFound } from "next/navigation";
 import { useAudio } from "@/components/AudioProvider";
 import { useState } from "react";
-import { ArrowLeft, Droplet, Leaf, Shield } from "lucide-react";
-import { products } from "@/data/products";
+import { ArrowLeft, Droplet, Shield } from "lucide-react";
+import { products, ProductSize, RelatedProduct } from "@/data/products";
 
 export default function ProductPage() {
   const params = useParams();
@@ -18,10 +18,10 @@ export default function ProductPage() {
     notFound();
   }
   
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]?.size);
+  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0]?.size || "");
   const { playCrunch } = useAudio();
 
-  const currentPrice = product.sizes.find((s: any) => s.size === selectedSize)?.price;
+  const currentPrice = product.sizes.find((s: ProductSize) => s.size === selectedSize)?.price;
 
   return (
     <div className="bg-background min-h-screen pt-24 selection:bg-accent selection:text-white relative overflow-hidden">
@@ -90,7 +90,7 @@ export default function ProductPage() {
                 <Shield className="text-accent flex-shrink-0 mt-1" size={24} />
                 <div>
                   <h4 className="text-foreground font-medium mb-1">Honest Transparency</h4>
-                  <p className="text-sm text-muted">We don't hide behind buzzwords. Everything you taste is right there on the label.</p>
+                  <p className="text-sm text-muted">We don't hide behind chemical names. Everything you taste is right there on the label.</p>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function ProductPage() {
             <h3 className="text-3xl font-display text-foreground mb-8 font-accent">Make it yours</h3>
             
             <div className="flex justify-center gap-4 mb-8">
-              {product.sizes.map((s: any) => (
+              {product.sizes.map((s: ProductSize) => (
                 <button
                   key={s.size}
                   onClick={() => { setSelectedSize(s.size); playCrunch(); }}
@@ -134,8 +134,8 @@ export default function ProductPage() {
             <div className="flex flex-col items-center gap-4">
               <p className="text-2xl text-foreground mb-4">Total: {currentPrice}</p>
               <button 
-                onClick={() => { playCrunch(); alert("Keep me posted logic triggered"); }}
-                className="w-full md:w-auto px-12 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium text-lg transition-transform transform hover:scale-105 shadow-lg shadow-accent/20"
+                onClick={() => { playCrunch(); }}
+                className="w-full md:w-auto px-12 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium text-lg transition-transform transform hover:scale-105 shadow-lg shadow-accent/20 active:scale-95"
               >
                 I'm interested
               </button>
@@ -146,15 +146,15 @@ export default function ProductPage() {
           <div className="pt-12 border-t border-muted/10">
             <h4 className="text-xl font-display text-foreground mb-8">You might also like</h4>
             <div className="flex flex-wrap justify-center gap-6">
-              {product.related.map((rel: any) => (
+              {product.related.map((rel: RelatedProduct) => (
                 <Link 
                   key={rel.slug} 
                   href={`/range/${rel.slug}`}
                   onClick={playCrunch}
-                  className="bg-surface px-6 py-4 rounded-xl border border-muted/5 hover:border-accent transition-colors flex items-center gap-3 shadow-md"
+                  className="bg-surface px-6 py-4 rounded-xl border border-muted/5 hover:border-accent transition-colors flex items-center gap-3 shadow-md group"
                 >
                   <div className="w-12 h-12 bg-black/5 rounded-md flex-shrink-0 flex items-center justify-center overflow-hidden relative">
-                    <Image src={rel.image} alt={rel.name} fill className="object-contain p-1" />
+                    <Image src={rel.image} alt={rel.name} fill className="object-contain p-1 group-hover:scale-110 transition-transform" sizes="48px" />
                   </div>
                   <span className="text-foreground text-sm font-medium">{rel.name}</span>
                 </Link>

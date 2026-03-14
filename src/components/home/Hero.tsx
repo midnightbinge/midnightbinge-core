@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useAudio } from "@/components/AudioProvider";
 
 const slides = [
@@ -59,7 +60,12 @@ export function Hero() {
         style={{ y: bgY, opacity }}
         className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-secondary/50 pointer-events-none"
       >
-        <img src="/assets/Breeze 01.png" alt="Brand Texture" className="w-full h-full object-cover opacity-20 mix-blend-overlay" />
+        <Image 
+          src="/assets/Breeze 01.png" 
+          alt="Midnight Atmosphere" 
+          fill
+          className="object-cover opacity-20 mix-blend-overlay"
+        />
       </motion.div>
 
       {/* Main Content & Slider Area */}
@@ -80,10 +86,12 @@ export function Hero() {
                 initial={{ y: 20 }}
                 animate={{ y: 0 }}
               >
-                <img 
+                <Image 
                   src={slides[currentSlide].image} 
-                  alt="Lifestyle" 
-                  className="w-full h-full object-cover opacity-60"
+                  alt={slides[currentSlide].tagline} 
+                  fill
+                  className="object-cover opacity-60"
+                  sizes="(max-width: 1200px) 100vw, 1200px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
               </motion.div>
@@ -94,11 +102,15 @@ export function Hero() {
                 animate={{ y: 0 }}
               >
                 <div className="relative w-full max-w-2xl aspect-[16/9] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/20 via-transparent to-transparent flex items-center justify-center">
-                  <img 
-                    src={slides[currentSlide].image} 
-                    alt="Product" 
-                    className="w-auto h-96 md:h-[32rem] object-contain drop-shadow-[0_0_80px_rgba(255,255,255,0.15)] transform rotate-[-5deg]"
-                  />
+                  <div className="relative w-full h-[80%] md:h-[32rem] transform rotate-[-5deg] drop-shadow-[0_0_80px_rgba(255,255,255,0.15)]">
+                    <Image 
+                      src={slides[currentSlide].image} 
+                      alt={slides[currentSlide].tagline} 
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -109,7 +121,7 @@ export function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-6 drop-shadow-lg"
+                  className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-6 drop-shadow-lg"
                 >
                   {slides[currentSlide].tagline}<span className="text-accent">.</span>
                 </motion.h1>
@@ -117,7 +129,7 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="text-xl md:text-3xl text-warm/90 font-display italic max-w-2xl drop-shadow-md"
+                  className="text-lg md:text-3xl text-warm font-accent max-w-2xl drop-shadow-md px-4"
                 >
                   {slides[currentSlide].subline}
                 </motion.p>
@@ -138,24 +150,24 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Buttons Repositioned Below Slider */}
+      {/* Buttons Repositioned Below Slider - REDUCED DELAY */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 5.7, ease: "easeOut" }}
-        className="relative z-20 flex flex-col sm:flex-row gap-6 items-center mt-12 mb-12"
+        transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+        className="relative z-20 flex flex-col sm:flex-row gap-6 items-center mt-12 mb-12 px-6 w-full justify-center"
       >
         <Link 
           href="/range"
           onClick={playCrunch}
-          className="px-10 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/30"
+          className="w-full sm:w-auto px-10 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/30 text-center"
         >
           Explore the Range
         </Link>
         <Link 
           href="/story"
           onClick={playCrunch}
-          className="px-10 py-5 border-2 border-foreground/20 hover:border-accent hover:text-accent text-foreground rounded-full font-medium transition-all hover:bg-accent/10"
+          className="w-full sm:w-auto px-10 py-5 border-2 border-foreground/20 hover:border-accent hover:text-accent text-foreground rounded-full font-medium transition-all hover:bg-accent/10 text-center"
         >
           Our Story
         </Link>

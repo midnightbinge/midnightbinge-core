@@ -2,23 +2,18 @@
 
 import { useAudio } from "@/components/AudioProvider";
 import { useTheme } from "@/components/ThemeProvider";
-import { Moon, Sun, Volume2, VolumeX, Menu, X, Search } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { motion, AnimatePresence } from "framer-motion";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { isMuted, toggleMute, playCrunch } = useAudio();
+  const { playCrunch } = useAudio();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +32,8 @@ export function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
+  const logoSrc = theme === "dark" ? "/assets/logo-tm-white.png" : "/assets/logo-tm-dark.png";
+
   return (
     <>
       <nav
@@ -46,12 +43,14 @@ export function Navbar() {
         )}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex-shrink-0">
-            {theme === "dark" ? (
-              <img src="/assets/logo-white.png" alt="Midnight Logo" className="h-12 md:h-16 w-auto object-contain transition-all duration-300" />
-            ) : (
-              <img src="/assets/logo-black.png" alt="Midnight Logo" className="h-12 md:h-16 w-auto object-contain transition-all duration-300" />
-            )}
+          <Link href="/" className="flex-shrink-0 relative w-32 md:w-40 h-10 md:h-12 transition-all duration-300">
+            <Image 
+              src={logoSrc} 
+              alt="Midnight Logo" 
+              fill
+              priority
+              className="object-contain"
+            />
           </Link>
 
           <div className="hidden lg:flex items-center gap-10">
@@ -62,14 +61,12 @@ export function Navbar() {
                 className="group relative py-2 text-sm font-medium transition-colors whitespace-nowrap"
                 onClick={playCrunch}
               >
-                {/* Moon Icon Hover Effect Above */}
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 text-accent transform translate-y-1 group-hover:translate-y-0">
                   <Moon size={10} fill="currentColor" />
                 </span>
                 
                 {link.name}
 
-                {/* Animated Underline */}
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
               </Link>
             ))}
@@ -79,12 +76,13 @@ export function Navbar() {
             <button onClick={toggleTheme} aria-label="Toggle Theme" className="hover:text-accent transition-colors p-2">
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <button
-              className="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
-              onClick={() => { playCrunch(); alert("Building box..."); }}
+            <Link
+              href="/range"
+              className="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/20"
+              onClick={playCrunch}
             >
-              Build your night Box
-            </button>
+              Explore the Range
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -92,7 +90,7 @@ export function Navbar() {
             <button onClick={toggleTheme} aria-label="Toggle Theme" className="hover:text-accent transition-colors">
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu" className="relative z-50">
+            <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu" className="relative z-50 p-2">
               {mobileOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -106,7 +104,7 @@ export function Navbar() {
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex flex-col items-center gap-8">
+        <div className="flex flex-col items-center gap-8 pb-[env(safe-area-inset-bottom)]">
           {links.map((link) => (
             <Link
               key={link.name}
@@ -120,17 +118,17 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <div className="flex gap-6 mt-8">
-            <button onClick={toggleMute} aria-label="Toggle Sound" className="hover:text-accent transition-colors">
-              {isMuted ? <VolumeX size={28} /> : <Volume2 size={28} />}
-            </button>
-          </div>
-          <button
+          
+          <Link
+            href="/range"
             className="mt-6 bg-accent hover:bg-accent-hover text-white px-8 py-4 text-xl rounded-full font-medium transition-colors"
-            onClick={() => { playCrunch(); alert("Building box..."); setMobileOpen(false); }}
+            onClick={() => {
+              setMobileOpen(false);
+              playCrunch();
+            }}
           >
-            Build your night Box
-          </button>
+            Explore the Range
+          </Link>
         </div>
       </div>
     </>

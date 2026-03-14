@@ -102,8 +102,8 @@ export function EntranceAnimation() {
                   <p className="text-3xl md:text-4xl font-display text-accent">
                     It's Midnight<span className="text-foreground">.</span>
                   </p>
-                  <p className="text-sm md:text-base font-body text-warm font-medium tracking-[0.4em] uppercase opacity-80">
-                    Snack Smart
+                  <p className="text-sm md:text-base font-accent text-warm tracking-[0.1em] opacity-90">
+                    Better Feels Good
                   </p>
                 </motion.div>
               )}

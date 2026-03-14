@@ -7,17 +7,26 @@ import { useTheme } from "./ThemeProvider";
 
 export function MakhanaFloat() {
   const [init, setInit] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
     });
+
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  if (!init) return null;
+  if (!init || isMobile) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1]">

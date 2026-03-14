@@ -1,50 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    quote: "Finally, a snack that doesn't taste like cardboard but doesn't make me feel terrible the next morning.",
-    name: "Rohan",
-    city: "Mumbai"
+    text: "Finally, a snack that doesn't taste like cardboard but still uses real ingredients. The Thai Sweet Chilli is my nightly ritual.",
+    author: "Rohan M.",
+    role: "Late Night Creator"
   },
   {
-    quote: "The Sweet Chilli flavour during my 2 AM coding sessions has become a ritual. Unmatched crunch.",
-    name: "Ananya",
-    city: "Bangalore"
+    text: "Roasted in olive oil makes such a difference. No heavy feeling the next morning. It's the only thing I stock in my office now.",
+    author: "Ananya K.",
+    role: "Strategic Designer"
   },
   {
-    quote: "It actually feels premium. You don't usually say that about a pouch of snacks.",
-    name: "Kabir",
-    city: "Delhi"
+    text: "The crunch is incredible. You can actually hear the quality. Simple, honest, and addictive in the best way possible.",
+    author: "Vikram S.",
+    role: "Wellness Enthusiast"
   }
 ];
 
 export function Testimonials() {
   return (
-    <section className="py-32 bg-surface relative overflow-hidden"><div className="brand-pattern-bg opacity-[0.02]" />
-      <div className="container mx-auto px-6 md:px-12">
-        <h2 className="text-4xl md:text-5xl font-display font-medium text-foreground mb-16 text-center">
-          Real nights. Real people.
-        </h2>
+    <section className="py-32 bg-surface relative overflow-hidden">
+      <div className="brand-pattern-bg opacity-[0.02]" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-display text-foreground mb-4">Midnight Voices</h2>
+          <p className="text-muted italic font-accent text-xl">"Real stories from the quiet hours."</p>
+        </div>
 
-        <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar">
-          {testimonials.map((t, idx) => (
-            <motion.div 
-              key={idx}
-              className="flex-shrink-0 w-[85vw] md:w-[400px] snap-center bg-secondary border border-white/5 p-10 rounded-2xl relative"
+        <div className="flex flex-wrap justify-center gap-8">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.2, duration: 0.8 }}
+              transition={{ delay: i * 0.1 }}
+              className="w-full md:w-[calc(33.333%-2rem)] bg-background p-10 rounded-3xl border border-foreground/5 shadow-xl relative group hover:border-accent/20 transition-all"
             >
-              <span className="absolute top-6 left-6 text-6xl font-display text-warm/20 leading-none">"</span>
-              <p className="text-lg md:text-xl text-foreground font-body italic relative z-10 mb-8 leading-relaxed">
-                {t.quote}
-              </p>
-              <div className="flex flex-col">
-                <span className="text-brand-cream font-medium">{t.name}</span>
-                <span className="text-muted text-sm">{t.city}</span>
+              <Quote className="text-accent/20 absolute top-8 left-8 group-hover:text-accent/40 transition-colors" size={40} />
+              <div className="relative z-10">
+                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8 italic font-display">
+                  "{t.text}"
+                </p>
+                <div className="border-t border-foreground/5 pt-6">
+                  <p className="font-bold text-foreground">{t.author}</p>
+                  <p className="text-sm text-muted uppercase tracking-widest">{t.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}
