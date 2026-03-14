@@ -11,20 +11,20 @@ const slides = [
     type: "emotion",
     image: "/lifestyle/01.png",
     tagline: "Better Feels Good",
-    subline: "Premium makhana crafted for your quietest hours."
+    subline: "Premium makhana, roasted in olive oil for your quietest hours."
   },
   {
     id: 2,
     type: "mockup",
     image: "/products/peri_peri_rush.png",
-    tagline: "The Midnight Crunch",
-    subline: "Bold flavors that don't compromise on wellness."
+    tagline: "The Honest Crunch",
+    subline: "Bold flavors that respect your body. Sourced with care."
   },
   {
     id: 3,
     type: "emotion",
     image: "/lifestyle/03.png",
-    tagline: "Desire Meets Design",
+    tagline: "Real Food for Real Nights",
     subline: "Snacking evolved for the bold and the beautiful."
   }
 ];
@@ -97,7 +97,7 @@ export function Hero() {
                   <img 
                     src={slides[currentSlide].image} 
                     alt="Product" 
-                    className="w-auto h-96 md:h-[32rem] object-contain drop-shadow-[0_0_80px_rgba(107,92,231,0.4)] transform rotate-[-5deg]"
+                    className="w-auto h-96 md:h-[32rem] object-contain drop-shadow-[0_0_80px_rgba(255,255,255,0.15)] transform rotate-[-5deg]"
                   />
                 </div>
               </motion.div>

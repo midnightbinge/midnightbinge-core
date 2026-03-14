@@ -5,18 +5,18 @@ import { Heart, ShieldCheck, Clock } from "lucide-react";
 
 const beliefs = [
   {
-    title: "Health with Heart.",
-    desc: "We don't do clinical. We believe better ingredients should taste like an indulgence.",
+    title: "Comfort by Design",
+    desc: "We believe better ingredients should taste like a reward. Sourced with care, made for your quietest hours.",
     icon: Heart
   },
   {
-    title: "Honest Indulgence.",
-    desc: "Roasted in olive oil. No hidden nasties. Just honest, bold flavor you can trust.",
+    title: "Radical Honesty",
+    desc: "Roasted slow in olive oil. Nothing hidden, just the seasoning you know. An indulgence that respects your body.",
     icon: ShieldCheck
   },
   {
-    title: "Made for Real Moments.",
-    desc: "From the 2 PM slump to the 2 AM screen glow. Midnight is crafted for when you need it most.",
+    title: "Real Moments",
+    desc: "From the afternoon pause to the midnight screen glow. We craft snacks for the moments that make you human.",
     icon: Clock
   }
 ];
