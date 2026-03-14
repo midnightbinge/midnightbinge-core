@@ -75,8 +75,8 @@
   --foreground: #F4F1EB;
   --color-surface: #0a113a;
   --color-secondary: #002e3a; /* Tiber */
-  --color-accent: #045866; /* Nobel Teal */
-  --color-accent-hover: #002e3a; /* Tiber */
+  --color-accent: #6B5CE7; /* Reverted to Purple */
+  --color-accent-hover: #5849D6;
   --color-warm: #ffe4d9; /* Coral Candy */
   --color-muted: #A0A2C0;
   --color-brand-cream: #FAF5E9;
@@ -94,13 +94,13 @@
   --foreground: #060b28;
   --color-surface: #e4e1ff;
   --color-secondary: #c9c4ff;
-  --color-accent: #045866; /* Nobel Teal */
-  --color-accent-hover: #002e3a; /* Tiber */
+  --color-accent: #6B5CE7; 
+  --color-accent-hover: #5849D6;
   --color-warm: #381c07; /* Clinker for grounding in light mode */
   --color-muted: #6A6D88;
   --color-brand-cream: #060b28;
   --color-input: rgba(255, 255, 255, 0.5);
-  --color-input-border: rgba(4, 88, 102, 0.2);
+  --color-input-border: rgba(107, 92, 231, 0.2);
 }
 
 body {

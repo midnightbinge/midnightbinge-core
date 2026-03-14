@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { AudioProvider } from "@/components/AudioProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MakhanaFloat } from "@/components/MakhanaFloat";
+import { Analytics } from "@/components/Analytics";
 
 export const viewport: Viewport = {
   themeColor: "#060b28",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Premium makhana snacks crafted for real moments. Roasted in olive oil, seasoned with care.",
     images: [
       {
-        url: "/assets/logo-tm-white.png", // Replace with a real OG image later
+        url: "/assets/logo-tm-white.png",
         width: 1200,
         height: 630,
         alt: "Midnight Binge",
@@ -57,12 +57,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="no-scrollbar">
       <body className={`antialiased font-body selection:bg-accent selection:text-white`}>
         <ThemeProvider>
-          <AudioProvider>
-            <MakhanaFloat />
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </AudioProvider>
+          <Analytics />
+          <MakhanaFloat />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

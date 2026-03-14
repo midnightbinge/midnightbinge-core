@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useAudio } from "@/components/AudioProvider";
 import { useTheme } from "./ThemeProvider";
 import { Instagram, Linkedin, Youtube } from "lucide-react";
 
 export function Footer() {
-  const { playCrunch } = useAudio();
   const { theme } = useTheme();
   
   const logoSrc = theme === "dark" ? "/assets/logo-tm-white.png" : "/assets/logo-tm-dark.png";
@@ -37,12 +35,12 @@ export function Footer() {
         {/* Center Column */}
         <div className="flex flex-col gap-4">
           <h4 className="text-sm uppercase tracking-widest text-muted font-bold mb-2">Explore</h4>
-          <Link href="/" className="hover:text-accent transition-colors w-fit text-sm" onClick={playCrunch}>Home</Link>
-          <Link href="/range" className="hover:text-accent transition-colors w-fit text-sm" onClick={playCrunch}>The Range</Link>
-          <Link href="/story" className="hover:text-accent transition-colors w-fit text-sm" onClick={playCrunch}>Midnight Story</Link>
-          <Link href="/whats-inside" className="hover:text-accent transition-colors w-fit text-sm" onClick={playCrunch}>What's Inside</Link>
-          <Link href="/gifts" className="hover:text-accent transition-colors w-fit text-sm" onClick={playCrunch}>Gifts</Link>
-          <Link href="/contact" className="hover:text-accent transition-colors w-fit text-sm" onClick={playCrunch}>Contact</Link>
+          <Link href="/" className="hover:text-accent transition-colors w-fit text-sm">Home</Link>
+          <Link href="/range" className="hover:text-accent transition-colors w-fit text-sm">The Range</Link>
+          <Link href="/story" className="hover:text-accent transition-colors w-fit text-sm">Midnight Story</Link>
+          <Link href="/whats-inside" className="hover:text-accent transition-colors w-fit text-sm">What's Inside</Link>
+          <Link href="/gifts" className="hover:text-accent transition-colors w-fit text-sm">Gifts</Link>
+          <Link href="/contact" className="hover:text-accent transition-colors w-fit text-sm">Contact</Link>
           
           <div className="mt-4 pt-4 border-t border-muted/10 space-y-2">
             <a href="tel:+919217020447" className="block text-sm text-muted hover:text-accent transition-colors">+91 9217020447</a>
@@ -58,22 +56,22 @@ export function Footer() {
             <input 
               type="email" 
               placeholder="Email address" 
+              aria-label="Email address for newsletter"
               className="bg-transparent border-none outline-none text-foreground w-full placeholder:text-muted/50 text-sm py-1"
               required
             />
             <button 
               type="submit" 
               className="text-accent font-medium hover:text-foreground transition-colors uppercase text-xs tracking-wider"
-              onClick={(e) => { e.preventDefault(); playCrunch(); }}
             >
               Submit
             </button>
           </form>
           <div className="flex gap-4 mt-4">
-            <a href="https://instagram.com/midnightbinge" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-muted/20 flex items-center justify-center hover:bg-accent/10 hover:border-accent transition-all group" aria-label="Instagram">
+            <a href="https://www.instagram.com/midnightbinge.in" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-muted/20 flex items-center justify-center hover:bg-accent/10 hover:border-accent transition-all group" aria-label="Instagram">
               <Instagram size={18} className="text-foreground group-hover:scale-110 transition-transform" />
             </a>
-            <a href="https://linkedin.com/company/midnightbinge" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-muted/20 flex items-center justify-center hover:bg-accent/10 hover:border-accent transition-all group" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/midnight-solution/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-muted/20 flex items-center justify-center hover:bg-accent/10 hover:border-accent transition-all group" aria-label="LinkedIn">
               <Linkedin size={18} className="text-foreground group-hover:scale-110 transition-transform" />
             </a>
             <a href="https://youtube.com/@midnightbinge" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-muted/20 flex items-center justify-center hover:bg-accent/10 hover:border-accent transition-all group" aria-label="YouTube">

@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useAudio } from "@/components/AudioProvider";
-import { products, Product } from "@/data/products";
+import { products } from "@/data/products";
 
 const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"] as const;
 
@@ -14,7 +13,6 @@ function RangeContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
   const [activeTab, setActiveTab] = useState<typeof categories[number]>("All");
-  const { playCrunch } = useAudio();
 
   useEffect(() => {
     if (categoryParam) {
@@ -56,10 +54,10 @@ function RangeContent() {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => { setActiveTab(cat); playCrunch(); }}
+            onClick={() => { setActiveTab(cat); }}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               activeTab === cat 
-                ? "bg-accent text-white shadow-[0_0_20px_rgba(4,88,102,0.4)]" 
+                ? "bg-accent text-white shadow-[0_0_20px_rgba(107,92,231,0.4)]" 
                 : "bg-surface text-muted hover:text-foreground border border-muted/10"
             }`}
           >
@@ -126,7 +124,7 @@ function RangeContent() {
                     </div>
                     
                     <button 
-                      onClick={(e) => { e.preventDefault(); playCrunch(); }}
+                      onClick={(e) => { e.preventDefault(); }}
                       className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-medium transition-colors shadow-md active:scale-95"
                     >
                       I'm interested

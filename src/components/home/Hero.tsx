@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useAudio } from "@/components/AudioProvider";
 
 const slides = [
   {
@@ -33,15 +32,14 @@ const slides = [
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const ref = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
   
-  const { playCrunch } = useAudio();
-
-  // Parallax effects
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  // Parallax effects - disabled if reduced motion is preferred
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", shouldReduceMotion ? "0%" : "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
@@ -74,16 +72,16 @@ export function Hero() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
+            transition={{ duration: shouldReduceMotion ? 0.4 : 1.2, ease: "easeOut" }}
             className="absolute inset-0 flex flex-col items-center justify-center text-center"
           >
             {slides[currentSlide].type === "emotion" ? (
               <motion.div 
                 className="w-full h-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative"
-                initial={{ y: 20 }}
+                initial={shouldReduceMotion ? {} : { y: 20 }}
                 animate={{ y: 0 }}
               >
                 <Image 
@@ -98,7 +96,7 @@ export function Hero() {
             ) : (
               <motion.div 
                 className="w-full h-full flex items-center justify-center"
-                initial={{ y: 20 }}
+                initial={shouldReduceMotion ? {} : { y: 20 }}
                 animate={{ y: 0 }}
               >
                 <div className="relative w-full max-w-2xl aspect-[16/9] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/20 via-transparent to-transparent flex items-center justify-center">
@@ -118,7 +116,7 @@ export function Hero() {
             {/* Floating Tagline Over Slider */}
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                 <motion.h1 
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-6 drop-shadow-lg"
@@ -152,21 +150,19 @@ export function Hero() {
 
       {/* Buttons Repositioned Below Slider - REDUCED DELAY */}
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         className="relative z-20 flex flex-col sm:flex-row gap-6 items-center mt-12 mb-12 px-6 w-full justify-center"
       >
         <Link 
           href="/range"
-          onClick={playCrunch}
           className="w-full sm:w-auto px-10 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-accent/30 text-center"
         >
           Explore the Range
         </Link>
         <Link 
           href="/story"
-          onClick={playCrunch}
           className="w-full sm:w-auto px-10 py-5 border-2 border-foreground/20 hover:border-accent hover:text-accent text-foreground rounded-full font-medium transition-all hover:bg-accent/10 text-center"
         >
           Our Story

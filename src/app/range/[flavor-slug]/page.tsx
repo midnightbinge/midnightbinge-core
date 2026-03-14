@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, notFound } from "next/navigation";
-import { useAudio } from "@/components/AudioProvider";
 import { useState } from "react";
 import { ArrowLeft, Droplet, Shield } from "lucide-react";
 import { products, ProductSize, RelatedProduct } from "@/data/products";
@@ -13,13 +12,13 @@ export default function ProductPage() {
   const params = useParams();
   const slug = params["flavor-slug"] as string;
   const product = products.find(p => p.slug === slug);
+  const shouldReduceMotion = useReducedMotion();
 
   if (!product) {
     notFound();
   }
   
   const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0]?.size || "");
-  const { playCrunch } = useAudio();
 
   const currentPrice = product.sizes.find((s: ProductSize) => s.size === selectedSize)?.price;
 
@@ -29,7 +28,7 @@ export default function ProductPage() {
       
       {/* Back Button */}
       <div className="container mx-auto px-6 py-6 relative z-10">
-        <Link href="/range" className="inline-flex items-center text-muted hover:text-foreground transition-colors group" onClick={playCrunch}>
+        <Link href="/range" className="inline-flex items-center text-muted hover:text-foreground transition-colors group">
           <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Range
         </Link>
       </div>
@@ -42,7 +41,7 @@ export default function ProductPage() {
         <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
           
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full md:w-1/2 flex justify-center"
@@ -61,7 +60,7 @@ export default function ProductPage() {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="w-full md:w-1/2 text-center md:text-left"
@@ -118,7 +117,7 @@ export default function ProductPage() {
               {product.sizes.map((s: ProductSize) => (
                 <button
                   key={s.size}
-                  onClick={() => { setSelectedSize(s.size); playCrunch(); }}
+                  onClick={() => { setSelectedSize(s.size); }}
                   className={`px-8 py-4 rounded-xl border transition-all ${
                     selectedSize === s.size 
                       ? "border-accent bg-accent/10 text-foreground shadow-[0_0_15px_rgba(4,88,102,0.2)]" 
@@ -134,7 +133,6 @@ export default function ProductPage() {
             <div className="flex flex-col items-center gap-4">
               <p className="text-2xl text-foreground mb-4">Total: {currentPrice}</p>
               <button 
-                onClick={() => { playCrunch(); }}
                 className="w-full md:w-auto px-12 py-5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium text-lg transition-transform transform hover:scale-105 shadow-lg shadow-accent/20 active:scale-95"
               >
                 I'm interested
@@ -150,7 +148,6 @@ export default function ProductPage() {
                 <Link 
                   key={rel.slug} 
                   href={`/range/${rel.slug}`}
-                  onClick={playCrunch}
                   className="bg-surface px-6 py-4 rounded-xl border border-muted/5 hover:border-accent transition-colors flex items-center gap-3 shadow-md group"
                 >
                   <div className="w-12 h-12 bg-black/5 rounded-md flex-shrink-0 flex items-center justify-center overflow-hidden relative">

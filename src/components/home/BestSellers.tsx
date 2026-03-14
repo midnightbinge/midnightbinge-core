@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useAudio } from "@/components/AudioProvider";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 
 const categories = [
@@ -30,8 +30,6 @@ const categories = [
 ];
 
 export function BestSellers() {
-  const { playCrunch } = useAudio();
-
   return (
     <section className="py-32 bg-secondary relative overflow-hidden">
       <div className="brand-pattern-bg opacity-[0.03]" />
@@ -41,8 +39,8 @@ export function BestSellers() {
           <h2 className="text-5xl md:text-6xl font-display font-medium mb-6 text-foreground">
             Explore the <span className="text-accent">Range</span>
           </h2>
-          <p className="text-muted text-lg max-w-2xl mx-auto">
-            From the bold heat of Peri Peri to the simple honesty of Raw Makhana. Find your category.
+          <p className="text-muted text-lg max-w-2xl mx-auto italic font-accent">
+            "From the bold heat of Peri Peri to the simple honesty of Raw Makhana. Find your category."
           </p>
         </div>
         
@@ -58,7 +56,6 @@ export function BestSellers() {
             >
               <Link 
                 href={`/range?category=${cat.slug}`} 
-                onClick={playCrunch}
                 className="block relative aspect-[4/5] bg-surface rounded-3xl border border-muted/10 overflow-hidden shadow-xl hover:shadow-accent/10 transition-all duration-500"
               >
                 {/* Background Glow */}
@@ -66,13 +63,15 @@ export function BestSellers() {
                 
                 {/* Image Section */}
                 <div className="absolute inset-0 flex items-center justify-center p-12">
-                  <motion.img 
-                    src={cat.image} 
-                    alt={cat.name} 
-                    className="w-full h-auto object-contain z-10 drop-shadow-2xl"
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                  />
+                  <div className="relative w-full h-full group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700 ease-out drop-shadow-2xl">
+                    <Image 
+                      src={cat.image} 
+                      alt={cat.name} 
+                      fill
+                      className="object-contain z-10"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
                 </div>
 
                 {/* Content Overlay */}

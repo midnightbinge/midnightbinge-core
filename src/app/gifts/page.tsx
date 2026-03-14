@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useAudio } from "@/components/AudioProvider";
 import { useState } from "react";
 import { Gift, Package, Sparkles, Heart } from "lucide-react";
 
@@ -36,7 +35,6 @@ const bundles = [
 
 export default function GiftsPage() {
   const [activeOccasion, setActiveOccasion] = useState(occasions[0].id);
-  const { playCrunch } = useAudio();
 
   return (
     <div className="bg-background min-h-screen pt-24 selection:bg-accent selection:text-foreground relative overflow-hidden">
@@ -61,7 +59,7 @@ export default function GiftsPage() {
           {occasions.map((occ) => (
             <button
               key={occ.id}
-              onClick={() => { setActiveOccasion(occ.id); playCrunch(); }}
+              onClick={() => { setActiveOccasion(occ.id); }}
               className={`flex items-center gap-3 px-8 py-4 rounded-full font-medium transition-all ${
                 activeOccasion === occ.id 
                   ? "bg-accent text-white shadow-lg shadow-accent/20 scale-105" 
@@ -98,7 +96,7 @@ export default function GiftsPage() {
               <div className="w-full flex items-center justify-between mt-auto pt-6 border-t border-white/5">
                 <span className="text-foreground font-bold text-xl">{bundle.price}</span>
                 <button
-                  onClick={() => { playCrunch(); }}
+                  onClick={() => {}}
                   className="px-6 py-2 bg-accent/10 hover:bg-accent text-accent hover:text-white rounded-full text-sm font-medium transition-all border border-accent/20 active:scale-95"
                 >
                   Enquire
@@ -120,12 +118,12 @@ export default function GiftsPage() {
 
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input type="text" placeholder="Your Name" className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
-              <input type="email" placeholder="Work Email" className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
+              <input type="text" placeholder="Your Name" aria-label="Your Name" className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
+              <input type="email" placeholder="Work Email" aria-label="Work Email" className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
             </div>
-            <input type="text" placeholder="Company Name" className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
-            <textarea placeholder="Tell us about your gifting needs..." rows={5} className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all resize-none" />
-            <button type="button" onClick={playCrunch} className="w-full bg-accent hover:bg-accent-hover text-white rounded-xl py-4 font-medium transition-all shadow-lg hover:shadow-accent/20 active:scale-[0.99]">
+            <input type="text" placeholder="Company Name" aria-label="Company Name" className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all" />
+            <textarea placeholder="Tell us about your gifting needs..." aria-label="Tell us about your gifting needs" rows={5} className="w-full rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-accent/50 transition-all resize-none" />
+            <button type="button" className="w-full bg-accent hover:bg-accent-hover text-white rounded-xl py-4 font-medium transition-all shadow-lg hover:shadow-accent/20 active:scale-[0.99]">
               Request a Proposal
             </button>
           </form>
