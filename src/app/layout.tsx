@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Midnight | Better Feels Good.",
+    default: "Midnight | Better that feels good.",
     template: "%s | Midnight"
   },
   description: "Premium makhana snacks crafted for real moments. Roasted in olive oil, seasoned with care. Honest ingredients for your quietest hours.",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://midnightbinge.com",
     siteName: "Midnight Binge",
-    title: "Midnight | Better Feels Good.",
+    title: "Midnight | Better that feels good.",
     description: "Premium makhana snacks crafted for real moments. Roasted in olive oil, seasoned with care.",
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Midnight | Better Feels Good.",
+    title: "Midnight | Better that feels good.",
     description: "Premium makhana snacks crafted for real moments.",
     images: ["/assets/logo-tm-white.png"],
   },
