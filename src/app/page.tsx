@@ -5,7 +5,6 @@ import { MoodSelector } from "@/components/home/MoodSelector";
 import { Philosophy } from "@/components/home/Philosophy";
 import { LifestyleBand } from "@/components/home/LifestyleBand";
 import { Testimonials } from "@/components/home/Testimonials";
-import { SpinWheel } from "@/components/home/SpinWheel";
 import { ClosingBridge } from "@/components/home/ClosingBridge";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <Philosophy />
       <LifestyleBand />
       <Testimonials />
-      <SpinWheel />
       <ClosingBridge />
     </div>
   );
