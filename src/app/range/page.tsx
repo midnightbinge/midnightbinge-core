@@ -3,38 +3,18 @@
 import { useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useAudio } from "@/components/AudioProvider";
 import { SpinWheel } from "@/components/home/SpinWheel";
+import { products, Product } from "@/data/products";
 
-const allProducts = [
-  // Flavoured
-  { id: "thai-chilli", name: "Thai Sweet Chilli", desc: "Bold and bright. A crunch that goes all night.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "thai-sweet-chilli", isGlobal: false, image: "/products/thai_sweet_chilli.png" },
-  { id: "peri-peri", name: "Peri Peri Rush", desc: "A little heat for a long evening.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "peri-peri-rush", isGlobal: false, image: "/products/peri_peri_rush.png" },
-  { id: "cheese", name: "Cheddar Cheese Comfort", desc: "Comfort you can hear.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "cheddar-cheese-comfort", isGlobal: false, image: "/products/cheddar_cheese_comfort.png" },
-  { id: "tandoori", name: "Tandoor Barbeque", desc: "Smoky. Slow. Satisfying.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "tandoor-barbeque", isGlobal: false, image: "/products/tandoor_barbeque.png" },
-  { id: "mint", name: "Jalapeno Mint", desc: "Cool outside. Warm inside. Just like you.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "jalapeno-mint", isGlobal: false, image: "/products/jalapeno_mint.png" },
-  { id: "salt-pepper", name: "Himalayan Salt and Pepper", desc: "Simple. Honest. Right.", category: "Flavoured Makhana", sizes: ["20g", "60g"], price: "₹50 - ₹150", slug: "himalayan-salt-pepper", isGlobal: false, image: "/products/himalayan_salt_and_pepper.png" },
-  // Coming Soon / Global
-  { id: "truffle", name: "Truffle", desc: "Earthy, rich, unforgettable.", category: "Flavoured Makhana", sizes: [], price: "", slug: "truffle", isGlobal: true, image: "/products/07.png" },
-  
-  // Raw
-  { id: "raw-makhana", name: "Pure Raw Makhana", desc: "Nothing added. Nothing hidden.", category: "Raw Makhana", sizes: ["100g", "200g"], price: "₹200 - ₹380", slug: "raw-makhana", isGlobal: false, image: "/products/raw_makhana.png" },
-
-  // Cripso
-  { id: "achari", name: "Achari Punch Crispo", desc: "A crunch that catches you off guard.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "achari-punch-crispo", isGlobal: false, image: "/products/achari_punch_crispo.png" },
-  { id: "mexican", name: "Tomato Mexicana Crispo", desc: "Bright, bold, and gone too fast.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "tomato-mexicana-crispo", isGlobal: false, image: "/products/tomato_mexicana_crispo.png" },
-  { id: "korean", name: "Fiesty Korean Crispo", desc: "Some cravings don't wait for permission.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "fiesty-korean-crispo", isGlobal: false, image: "/products/fiesty_korean_cripso.png" },
-  { id: "mystery", name: "Mystery Masala Crispo", desc: "A flavour that keeps you guessing.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "mystery-masala-crispo", isGlobal: false, image: "/products/mystery_masala_crispo.png" },
-  { id: "ranch", name: "Ranch-O-Cheese Crispo", desc: "Creamy, cheesy, and absolutely addictive.", category: "Cripso", sizes: ["25g", "50g"], price: "₹30 - ₹60", slug: "ranch-o-cheese-crispo", isGlobal: false, image: "/products/ranch_o_cheese_cripso.png" },
-];
-
-const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"];
+const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"] as const;
 
 function RangeContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState<typeof categories[number]>("All");
   const { playCrunch } = useAudio();
 
   useEffect(() => {
@@ -46,8 +26,8 @@ function RangeContent() {
   }, [categoryParam]);
 
   const filteredProducts = activeTab === "All" 
-    ? allProducts 
-    : allProducts.filter(p => p.category === activeTab);
+    ? products 
+    : products.filter(p => p.category === activeTab);
 
   return (
     <div className="bg-background min-h-screen pt-32 selection:bg-accent selection:text-white relative overflow-hidden">
@@ -80,7 +60,7 @@ function RangeContent() {
             onClick={() => { setActiveTab(cat); playCrunch(); }}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               activeTab === cat 
-                ? "bg-accent text-white shadow-[0_0_20px_rgba(107,92,231,0.4)]" 
+                ? "bg-accent text-white shadow-[0_0_20px_rgba(4,88,102,0.4)]" 
                 : "bg-surface text-muted hover:text-foreground border border-muted/10"
             }`}
           >
@@ -117,32 +97,40 @@ function RangeContent() {
 
                 {/* Pack Image */}
                 <Link href={`/range/${product.slug}`} className="block relative z-10 w-full aspect-square mb-8 flex items-center justify-center">
-                  <img src={product.image} alt={product.name} className="w-auto h-[80%] object-contain drop-shadow-2xl group-hover:scale-[1.08] transition-transform duration-500 ease-out" />
+                  <div className="relative w-full h-[80%] group-hover:scale-[1.08] transition-transform duration-500 ease-out drop-shadow-2xl">
+                    <Image 
+                      src={product.image} 
+                      alt={product.name} 
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 </Link>
 
                 <div className="flex-grow flex flex-col z-10">
                   <Link href={`/range/${product.slug}`} className="hover:text-accent transition-colors">
                     <h3 className="text-3xl font-display text-foreground mb-2">{product.name}</h3>
                   </Link>
-                  <p className="text-muted italic text-sm mb-6 flex-grow">"{product.desc}"</p>
+                  <p className="text-muted italic text-sm mb-6 flex-grow">"{product.tagline}"</p>
                   
                   <div className="flex items-center justify-between mt-auto pt-6 border-t border-muted/10">
                     <div>
                       {product.sizes.length > 0 && (
                         <div className="flex gap-2 mb-1">
-                          {product.sizes.map(size => (
-                            <span key={size} className="text-xs bg-muted/10 text-muted px-2 py-0.5 rounded">{size}</span>
+                          {product.sizes.map(s => (
+                            <span key={s.size} className="text-xs bg-muted/10 text-muted px-2 py-0.5 rounded">{s.size}</span>
                           ))}
                         </div>
                       )}
-                      {product.price && <p className="text-foreground font-medium">{product.price}</p>}
+                      {product.priceRange && <p className="text-foreground font-medium">{product.priceRange}</p>}
                     </div>
                     
                     <button 
-                      onClick={(e) => { e.preventDefault(); playCrunch(); alert(`Notify form for ${product.name}`); }}
+                      onClick={(e) => { e.preventDefault(); playCrunch(); alert(`Interest captured for ${product.name}`); }}
                       className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-medium transition-colors shadow-md"
                     >
-                      Notify Me
+                      I'm interested
                     </button>
                   </div>
                 </div>
