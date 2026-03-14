@@ -26,10 +26,10 @@ const bundles = [
     image: "/products/peri_peri_rush.png" 
   },
   { 
-    name: "Cripso Party Pack", 
-    desc: "For the nights that need a different kind of crunch.", 
+    name: "Feisty Korean Pack", 
+    desc: "A bold kick of Gochugaru and a touch of sweetness.", 
     price: "₹350", 
-    image: "/products/achari_punch_crispo.png" 
+    image: "/products/feisty_korean_crispo.png" 
   },
 ];
 

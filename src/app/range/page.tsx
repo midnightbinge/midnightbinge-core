@@ -8,17 +8,32 @@ import { useSearchParams } from "next/navigation";
 import { products } from "@/data/products";
 
 const categories = ["All", "Flavoured Makhana", "Raw Makhana", "Cripso"] as const;
+type Category = typeof categories[number];
+
+const paramToCategory: Record<string, Category> = {
+  "flavoured-makhana": "Flavoured Makhana",
+  "raw-makhana": "Raw Makhana",
+  "cripso": "Cripso"
+};
 
 function RangeContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
-  const [activeTab, setActiveTab] = useState<typeof categories[number]>("All");
+  
+  // Initialize state once to avoid set-state-in-effect if possible
+  const [activeTab, setActiveTab] = useState<Category>(() => {
+    if (categoryParam && paramToCategory[categoryParam]) {
+      return paramToCategory[categoryParam];
+    }
+    return "All";
+  });
 
+  // Sync state if URL changes after mount
   useEffect(() => {
-    if (categoryParam) {
-      if (categoryParam === "flavoured-makhana") setActiveTab("Flavoured Makhana");
-      else if (categoryParam === "raw-makhana") setActiveTab("Raw Makhana");
-      else if (categoryParam === "cripso") setActiveTab("Cripso");
+    if (categoryParam && paramToCategory[categoryParam]) {
+      setActiveTab(paramToCategory[categoryParam]);
+    } else if (!categoryParam) {
+      setActiveTab("All");
     }
   }, [categoryParam]);
 
@@ -57,7 +72,7 @@ function RangeContent() {
             onClick={() => { setActiveTab(cat); }}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               activeTab === cat 
-                ? "bg-accent text-white shadow-[0_0_20px_rgba(107,92,231,0.4)]" 
+                ? "bg-accent text-white shadow-[0_0_20px_rgba(107,146,231,0.4)]" 
                 : "bg-surface text-muted hover:text-foreground border border-muted/10"
             }`}
           >
@@ -141,7 +156,7 @@ function RangeContent() {
       <section className="py-32 bg-secondary/30 relative overflow-hidden border-t border-foreground/5">
         <div className="brand-pattern-bg opacity-[0.02]" />
         <div className="container mx-auto px-6 text-center relative z-10">
-          <p className="font-accent text-3xl text-foreground mb-6">"Better that feels Good."</p>
+          <p className="font-accent text-3xl text-foreground mb-6">"Better Feels Good."</p>
           <p className="text-muted max-w-md mx-auto">Until next time, snack better. Feel good.</p>
         </div>
       </section>

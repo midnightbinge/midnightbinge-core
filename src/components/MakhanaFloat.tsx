@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "./ThemeProvider";
+import { useReducedMotion } from "framer-motion";
 
 export function MakhanaFloat() {
   const [init, setInit] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { theme } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -26,7 +28,8 @@ export function MakhanaFloat() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  if (!init || isMobile) return null;
+  // Disable particles if system reduced motion is on or if on mobile
+  if (!init || isMobile || shouldReduceMotion) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1]">

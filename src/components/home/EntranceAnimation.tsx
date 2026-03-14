@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
@@ -10,10 +10,17 @@ export function EntranceAnimation() {
   const [showTagline, setShowTagline] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
+  // Define handleComplete first to avoid hoisting issues
+  const handleComplete = useCallback(() => {
+    setIsVisible(false);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("hasSeenEntrance", "true");
+    }
+  }, []);
+
   useEffect(() => {
     // Check if user has already seen the animation this session
-    const hasSeen = sessionStorage.getItem("hasSeenEntrance");
-    if (hasSeen) {
+    if (typeof window !== "undefined" && sessionStorage.getItem("hasSeenEntrance")) {
       setIsVisible(false);
       return;
     }
@@ -31,12 +38,7 @@ export function EntranceAnimation() {
       clearTimeout(flipTimer);
       clearTimeout(resolveTimer);
     };
-  }, []);
-
-  const handleComplete = () => {
-    setIsVisible(false);
-    sessionStorage.setItem("hasSeenEntrance", "true");
-  };
+  }, [handleComplete]);
 
   return (
     <AnimatePresence>
@@ -105,7 +107,7 @@ export function EntranceAnimation() {
                     It's Midnight<span className="text-foreground">.</span>
                   </p>
                   <p className="text-xs md:text-base font-accent text-warm tracking-[0.1em] opacity-90">
-                    Better Feels Good
+                    Better Feels Good.
                   </p>
                 </motion.div>
               )}
